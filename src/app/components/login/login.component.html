@@ -1,0 +1,90 @@
+
+<div *ngIf="waiting" class="position-fixed z-3 bg-body-secondary bg-opacity-50 w-100" style="height: 100%;">
+  <div class="d-flex justify-content-center align-items-center w-100" style="height: 100%;">
+      <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+  </div>
+</div>
+
+<div class="background-images overflow-hidden">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6"></div>
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form id="form-container" [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="row">
+              </div>
+
+              <h4 class="text-center card-title mb-3">Đăng nhập</h4>
+
+              <div class="form-outline mb-3">
+                <input type="text" id="username" class="form-control" formControlName="username"  aria-describedby="helpUsernameId" placeholder="Tên đăng nhập..."/>
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                  <div *ngIf="username.errors?.['required']">
+                      <small id="helpUsernameId">Tên đăng nhập không được bỏ trống</small>
+                  </div>
+                  <div *ngIf="username.errors?.['minlength']">
+                      <small id="helpUsernameId">Tên đăng nhập phải chứa ít nhất
+                        {{ username.errors?.['minlength'].requiredLength }} kí tự </small>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-outline mb-3">
+                <div class="position-relative">
+                  <input #passwordField type="password" id="password" class="form-control" formControlName="password" placeholder="Mật khẩu..."/>
+                  <i
+                  class="fas form-icon {{passwordField.type == 'text' ? 'fa-eye' : 'fa-eye-slash'}}"
+                  (click)="passwordField.type = (passwordField.type == 'text' ? 'password' : 'text')">
+                  </i>
+                </div>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                    <div *ngIf="password.errors?.['required']">
+                        <small id="helpPasswordId">Mật khẩu không được bỏ trống</small>
+                    </div>
+                    <div *ngIf="password.errors?.['minlength']">
+                        <small id="helpPasswordId">Mật khẩu phải từ 8 kí tự trở lên</small>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-check d-flex justify-content-spacebetwen mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" />
+                <label class="form-check-label me-2" for="savePassword">
+                  Lưu mật khẩu
+                </label>
+              </div>
+
+              <button type="submit" class="btn-login btn btn-block mb-3" form="loginForm">
+                Đăng nhập
+              </button>
+              <div class="divider d-flex align-items-center my-3">
+                <p class="text-center mx-3 mb-0">nếu</p>
+              </div>
+              <p class="text-center">Chưa có tài khoản?
+                <a routerLink="/register" style="color:#ffcc4d; font-weight: 500;" class="text-decoration-none ">Đăng ký ngay</a>
+              </p>
+              <!-- <div class="text-center">
+                <button type="button" class="btn btn-link-social btn-floating mx-1">
+                  <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                </button>
+                <button type="button" class="btn btn-link-social btn-floating mx-1">
+                  <a href="https://myaccount.google.com/"><i class="fab fa-google"></i></a>
+                </button>
+                <button type="button" class="btn btn-link-social btn-floating mx-1">
+                  <a href="https://www.tiktok.com/"><i class="fa-brands fa-tiktok"></i></a>
+                </button>
+                <button type="button" class="btn btn-link-social btn-floating mx-1">
+                  <a href="https://www.shopify.com/"><i class="fa-brands fa-shopify"></i></a>
+                </button>
+              </div> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

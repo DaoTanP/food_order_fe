@@ -1,0 +1,161 @@
+
+  <nav id="container-navbar" class="navbar navbar-expand-lg p-2 sticky-top">
+    <div class="container d-flex">
+      <!-- <a routerLink="/" class="d-block align-items-center text-decoration-none m-auto"></a> -->
+      <ul class="navbar-nav flex-row flex-wrap">
+        <li class="nav-item col-3 col-lg-auto">
+          <a href="">
+            <img
+            src="../../../../assets/images/logo/logo.png"
+            style="width: 90px; height: 70px"
+            alt=""
+            class="home-text d-none d-sm-block nav-link py-2 px-0 img-fluid"/>
+          </a>
+        </li>
+        <li class="nav-item col-3 col-lg-auto d-none d-sm-block mt-3">
+          <div class="dropdown">
+            <button
+              class="btn btn-light dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Quy Nhơn
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Địa chỉ 1</a></li>
+              <li><a class="dropdown-item" href="#">Địa chỉ 2</a></li>
+              <li><a class="dropdown-item" href="#">Địa chỉ 3</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item col-3 col-lg-auto d-none d-sm-block mt-3">
+          <div class="dropdown">
+            <button
+              class="btn btn-light dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Tất cả
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Món Khô</a></li>
+              <li><a class="dropdown-item" href="#">Món Nước</a></li>
+              <li><a class="dropdown-item" href="#">Nước Uống</a></li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <form class="flex-grow-1 mx-lg-3">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control border-2"
+            [ngModel]
+            #searchInput
+            placeholder="Tìm món ngay..."
+            aria-describedby="quick-search"/>
+          <button
+            class="btn btn-search"
+            type="button"
+            id="quick-search"
+            routerLink="/search">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+
+      <hr class="d-lg-none"/>
+
+      <ul class="navbar-nav flex-row flex-wrap">
+        <li class="nav-item col-3 col-sm-auto">
+          <button class="btn btn-light rounded-circle py-2" (click)="toggleTheme()">
+            <img src="../../../../assets/images/icons/moon.png"
+            alt="" style="width: 25px; height: 25px;">
+            <!-- <span *ngIf="isDark">
+              <i class="icon fa-solid fa-circle"></i>
+            </span>
+            <span *ngIf="!isDark">
+              <i class="icon fa-solid fa-circle-half-stroke"></i>
+            </span> -->
+          </button>
+        </li>
+
+        <li class="nav-item col-3 col-lg-auto">
+          <button class="btn btn-light rounded-circle py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+            <img src="../../../../assets/images/icons/cart.png" alt="" style="width: 25px; height: 25px;">
+          </button>
+        </li>
+        <li class="nav-item col-3 col-lg-auto">
+          <button routerLink="/register" class="btn btn-light rounded-circle py-2">
+            <img src="../../../../assets/images/icons/user.png" alt="" style="width: 25px; height: 25px;">
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Giỏ hàng</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <p>Content</p>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<!-- Footer -->
+  <footer id="container-footer" class="pt-5 pb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-4 d-flex justify-content-center">
+          <a href="">
+            <img
+            src="../../../../assets/images/logo/logo.png"
+            style="width: 260px; height: 150px"
+            alt=""
+            class="img-fluid"/>
+          </a>
+        </div>
+        <div class="col-12 col-lg-4">
+          <div class="row w-100 mt-5 mb-0">
+            <div class="col d-flex justify-content-center">
+              <button class="btn btn-light rounded-circle">
+                <img src="../../../../assets/images/icons/tiktok.png"
+                alt="" style="width: 50px; height: 55px;">
+              </button>
+            </div>
+            <div class="col d-flex justify-content-center">
+              <button class="btn btn-light rounded-circle">
+                <img src="../../../../assets/images/icons/facebook.png"
+                style="width: 50px; height: 55px;"
+                alt="">
+              </button>
+            </div>
+            <div class="col d-flex justify-content-center">
+              <button class="btn btn-light rounded-circle">
+                <img src="../../../../assets/images/icons/youtube.png"
+                style="width: 50px; height: 55px;"
+                alt="">
+              </button>
+            </div>
+          </div>
+          <!-- <div class="text-center">
+            Kết nối với chúng tôi
+          </div> -->
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+          <div class="row">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247992.89300283077!2d109.06288719981411!3d13.785567188577133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6c65736eabd9%3A0xd362348e5af3d559!2zUXV5IE5oxqFuLCBCw6xuaCDEkOG7i25oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1712807946411!5m2!1svi!2s"
+            width="400" height="200" style="border: none;"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+

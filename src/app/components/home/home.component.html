@@ -1,0 +1,28 @@
+<h4>Home Page</h4>
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#addFood" aria-controls="oc"><i class="fa-solid fa-circle-plus"></i></button>
+
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="addFood" aria-labelledby="addFoodLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title text-center" id="addfoodLabel">Thêm vào giỏ hàng</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="container-body mb-5">
+      <div class="food">
+        <p>Tên món ăn/Giá </p>
+      </div>
+      <div class="wrap-message">
+        <h5 class="message-text mt-3">Lời nhắn</h5>
+          <textarea class="text-area form-control" placeholder="VD:Không hành..." spellcheck="false" id="floatingTextarea"></textarea>
+          <!-- <label for="floatingTextarea">Lời nhắn...</label> -->
+      </div>
+    </div>
+    <div class="container-footer d-flex align-content-end flex-wrap ">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-warning"><i class="fa-solid fa-plus"></i></button>
+        <button type="button" class="btn btn-secondary">1</button>
+        <button type="button" class="btn btn-warning"><i class="fa-solid fa-minus"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
