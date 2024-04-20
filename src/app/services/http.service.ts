@@ -61,4 +61,5 @@ export class HttpService {
     'Authorization': 'Bearer ' + this.dataService.getSession('access_token'),
   } });
   }
+
 }

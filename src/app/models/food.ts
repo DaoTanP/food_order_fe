@@ -1,11 +1,12 @@
-export class Book
+export class Food
 {
     constructor(
         public _id: string = '',
         public title: string = '',
         public overview: string = '',
         public images: string[] = [],
-        public price: number = 0
+        public price: number = 0,
+        public tags: string = '',
 
     )
     {

@@ -2,26 +2,29 @@
 .background-images {
   background-size: cover;
   background-image:
-  url("https://franchiseindia.s3.ap-south-1.amazonaws.com/uploads/content/wi/art/5d14c6c87b1f2.jpeg");
+  url("https://img.freepik.com/premium-vector/fast-food-snacks-seamless-pattern-drinks-dessert-isolated-blue_71374-224.jpg?w=740");
   background-attachment: fixed;
+  height: 100dvh;
+  overflow: auto;
 }
 
-#form-container {
-  font-family: Montserrat;
+.card-body {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-h4 {
-  font-weight: 600;
+.btn:active {
+  border-color: #ffcc4d;
 }
 
 .btn-register {
   font-weight: 500;
   background-color: #ffcc4d;
   color: #000000;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .btn-register:hover {
-  background-color: #e8be53;
+  background-color: #f2b314;
 }
 
 .btn-link-social {

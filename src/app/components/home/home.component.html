@@ -1,28 +1,51 @@
-<h4>Home Page</h4>
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#addFood" aria-controls="oc"><i class="fa-solid fa-circle-plus"></i></button>
+<div class="container">
+  <h2 class="fw-bold mt-5">Món ăn được đề xuất cho bạn</h2>
+</div>
+<app-signature-dish></app-signature-dish>
+<div class="container">
+  <h2 class="fw-bold">Nhiều lượt đặt</h2>
+</div>
+<app-carousel></app-carousel>
+<div class="container">
+  <h2 class="fw-bold">Những món có thể chọn</h2>
+</div>
+<app-food-menu></app-food-menu>
 
-<div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="addFood" aria-labelledby="addFoodLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title text-center" id="addfoodLabel">Thêm vào giỏ hàng</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div class="container">
+  <h2 class="fw-bold">Vì sao bạn nên Order trên Foodly</h2>
+  <ul>
+    <li>Nhanh nhất - Foodly cung cấp dịch vụ giao đồ ăn nhanh nhất thị trường.</li>
+    <li>Dễ dàng nhất - Giờ đây, bạn chỉ cần thực hiện vài cú nhấp chuột là đã có thể đặt đồ ăn.</li>
+    <li>Đáp ứng mọi nhu cầu - Từ món ăn đặc sản địa phương đến các nhà hàng được ưa thích, nhiều lựa chọn đa dạng chắc
+      chắn sẽ luôn làm hài lòng khẩu vị của bạn.</li>
+    <li>Dễ dàng thanh toán - Giao và nhận đồ ăn thật dễ dàng.</li>
+  </ul>
+  <h2 class="fw-bold">Những câu hỏi thường gặp</h2>
+  <h3>Foodly là gì ?</h3>
+  <p>Foodly là dịch vụ Giao đồ
+    ăn nhanh tại Quy Nhơn.
+    Chúng tôi đã sắp xếp tất cả các món ăn,
+    nhà hàng và thực phẩm yêu thích của bạn một cách hợp lý để giúp bạn tìm được đồ ăn dễ dàng và nhanh chóng nhất có
+    thể. Tìm và đặt món ăn yêu thích tại Quy Nhơn thật dễ dàng - đặt đồ ăn trực tuyến chỉ bằng vài thao tác,
+    từ món cho bữa sáng, đến các món chính.
+    Hãy để chúng tôi xua tan cơn đói của bạn nhờ một loạt đối tác bán đồ ăn ở Quy Nhơn.
+  </p>
+
+  <div class="d-flex justify-content-center h-100">
+    <button class="btn mb-3 w-100 p-2 btn-readmore" type="button" data-bs-toggle="collapse"
+      data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Xem thêm
+    </button>
   </div>
-  <div class="offcanvas-body">
-    <div class="container-body mb-5">
-      <div class="food">
-        <p>Tên món ăn/Giá </p>
+  <div class="collapse mb-5" id="collapseExample">
+    <h2 class="fw-bold">Làm cách nào để đặt đồ ăn ở Quy Nhơn ?</h2>
+    <p>Sau đây là cách đơn giản nhất để đặt đồ ăn qua trên Foodly khi bạn ở Quy Nhơn:</p>
+      <div class="fw-bold">
+        <p>1. Tìm kiếm món ăn yêu thích</p>
+        <p>2. Kiểm tra & Thanh toán</p>
+        <p>3. Giao hàng</p>
       </div>
-      <div class="wrap-message">
-        <h5 class="message-text mt-3">Lời nhắn</h5>
-          <textarea class="text-area form-control" placeholder="VD:Không hành..." spellcheck="false" id="floatingTextarea"></textarea>
-          <!-- <label for="floatingTextarea">Lời nhắn...</label> -->
-      </div>
-    </div>
-    <div class="container-footer d-flex align-content-end flex-wrap ">
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-warning"><i class="fa-solid fa-plus"></i></button>
-        <button type="button" class="btn btn-secondary">1</button>
-        <button type="button" class="btn btn-warning"><i class="fa-solid fa-minus"></i></button>
-      </div>
-    </div>
+    <h2 class="fw-bold">Foodly có cung cấp dịch vụ giao đồ ăn 24x7 không?</h2>
+    <p>Chúng tôi chỉ biết một điều duy nhất, đó là "đồ ăn", vậy nên tất nhiên chúng tôi cung cấp dịch vụ này rồi.</p>
   </div>
 </div>

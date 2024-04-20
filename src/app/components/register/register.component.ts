@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Route, Router } from '@angular/router';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-register',
@@ -23,13 +26,13 @@ export class RegisterComponent {
   protected confirmPassword: FormControl = new FormControl(null, [Validators.required]);
   protected agreement: FormControl = new FormControl(false);
 
-  public registerForm: FormGroup = new FormGroup({
-    displayName: this.displayName,
-    username: this.username,
-    password: this.password,
-    confirmPassword: this.confirmPassword,
-    agreement: this.agreement
-  }, [this.formGroupMatchValidator('confirmPassword', 'password')]);
+  // public registerForm: FormGroup = new FormGroup({
+  //   displayName: this.displayName,
+  //   username: this.username,
+  //   password: this.password,
+  //   confirmPassword: this.confirmPassword,
+  //   agreement: this.agreement
+  // }, [this.formGroupMatchValidator('confirmPassword', 'password')]);
 
 
   public matchValidator (controlToMatch: AbstractControl<any, any>): ValidatorFn
@@ -49,13 +52,26 @@ export class RegisterComponent {
       return (validateValue && matchValue && validateValue.value === matchValue.value) ? null : { notMatch: true };
     }
   }
-  //Toggle show/hide password
-  // hidePassword: boolean = true;
-  // toggleShowHidePassword(): void {
-  //   this.hidePassword = !this.hidePassword;
-  // }
 
-  public register(): void {
-
+  public registerForm !: FormGroup;
+  constructor (private formBuilder: FormBuilder, private http: HttpClient, private router: Router){}
+  ngOnInit():void {
+    this.registerForm = this.formBuilder.group({
+      displayName: [''],
+      username: [''],
+      password: '',
+      confirmPassword: [''],
+      agreement: Boolean,
+    })
   }
+
+  register(){
+    this.http.post<any>("http://localhost:3000/registerUser", this.registerForm.value)
+    .subscribe( res => {
+      alert("Successfully registered");
+      this.registerForm.reset();
+      this.router.navigate(['login']);
+    })
+  }
+
 }

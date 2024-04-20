@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
+import { AlertService } from '../../services/alert-service.service';
+import { AuthGuardService } from '../../services/auth-guard.service';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +25,8 @@ export class LoginComponent {
 
   constructor(
     private httpService: HttpService,
-    // private alertService: AlertService,
-    // private authGuardService: AuthGuardService,
+    private alertService: AlertService,
+    private authGuardService: AuthGuardService,
     private router: Router,
   )
   {
@@ -34,12 +36,12 @@ export class LoginComponent {
 
   public login (): void
   {
-    // this.alertService.clearAlert();
-    // if (!this.loginForm.valid)
-    // {
-    //   this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
-    //   return;
-    // }
+      // this.alertService.clearAlert();
+      // if (!this.loginForm.valid)
+      // {
+      //   this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
+      //   return;
+      // }
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 

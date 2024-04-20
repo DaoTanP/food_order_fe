@@ -1,0 +1,26 @@
+.wrap-message {
+  border-top: 2px solid #f7f7f7;
+}
+
+.btn-add {
+  background-color: #ffcc4d;
+  padding: 9px 48px;
+}
+
+.btn-add:hover {
+  background-color: #d8c185;
+}
+
+.btn-add-food {
+  padding: 0px 40px;
+  border-radius: 32px;
+  background-color: #ffcc4d;
+  color: #fff;
+}
+
+/* .container-footer {
+  width: 100%;
+  background-color: #fff;
+  padding: 24px;
+  box-shadow: 0 -2px 6px 0 rgba(28,28,28,.06);
+} */

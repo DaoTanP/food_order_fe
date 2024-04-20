@@ -7,23 +7,16 @@ export class User
     public username: string = "",
     public password: string = "",
     public displayName: string = "",
-    public dateOfBirth: string | null = null,
-    public dob: Date | null = null,
-    public gender: boolean | null = null,
     public address: string | null = null,
     public email: string | null = null,
     public phoneNumber: string | null = null,
     public avatar: string | null = null,
-    public favorite: string[] = [],
-    public cardId: String | null = null,
+    // public favorite: string[] = [],
   )
 
   {
-      if (dateOfBirth)
-          dob = new Date(dateOfBirth);
-
       if (!avatar)
-          avatar = defaultAvatarImageUrl;
+        avatar = defaultAvatarImageUrl;
   }
 
   public set value (u: User)
@@ -32,7 +25,6 @@ export class User
     this.username = u.username;
     this.password = u.password;
     this.displayName = u.displayName;
-    this.gender = u.gender;
     this.address = u.address;
     this.email = u.email;
     this.phoneNumber = u.phoneNumber;

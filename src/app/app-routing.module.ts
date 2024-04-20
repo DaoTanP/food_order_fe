@@ -7,7 +7,7 @@ import { MainLayoutComponent } from './components/layout/main-layout/main-layout
 import { mainLayoutRoute } from "./routes/main-layout.routes";
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: '', component: MainLayoutComponent, children: mainLayoutRoute },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},

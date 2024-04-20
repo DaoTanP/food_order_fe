@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FoodScrollListComponent } from './components/food-scroll-list/food-scroll-list.component';
 import { FoodDetailsComponent } from './components/food-details/food-details.component';
+import { FoodSearchComponent } from './components/food-search/food-search.component';
+import { FoodMenuComponent } from './components/food-menu/food-menu.component';
+import { SignatureDishComponent } from './components/signature-dish/signature-dish.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { FoodDetailsComponent } from './components/food-details/food-details.com
     CarouselComponent,
     FoodScrollListComponent,
     FoodDetailsComponent,
+    FoodSearchComponent,
+    FoodMenuComponent,
+    SignatureDishComponent,
   ],
   imports: [
     BrowserModule,

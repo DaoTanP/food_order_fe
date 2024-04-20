@@ -11,7 +11,37 @@
 
 .text-area {
   margin-top: 10px;
-  resize: none;
+  /* resize: none; */
 }
 
+.btn-readmore {
+  border: 1px solid #333;
+  box-shadow: none;
+}
+
+.btn-readmore:hover {
+  font-weight: 500;
+  background-color: #fff;
+  color: #ffcc3d;
+  border-color: #ffcc4d;
+}
+
+.btn-readmore[aria-expanded="true"] {
+  display: none;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+li::before {
+  content: url(https://food.grab.com/static/images/tick.svg);
+  margin-right: 4px;
+}
 

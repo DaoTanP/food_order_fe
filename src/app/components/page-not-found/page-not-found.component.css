@@ -9,10 +9,11 @@
 }
 
 .four_zero_four_bg {
-  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  background-image: url(https://miro.medium.com/v2/resize:fit:1400/1*zE2qnVTJehut7B8P2aMn3A.gif);
   height: 400px;
   background-position: center;
   padding-bottom: 100px;
+  background-repeat: no-repeat;
 }
 
 

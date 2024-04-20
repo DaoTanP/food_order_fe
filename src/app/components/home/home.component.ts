@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, take } from 'rxjs';
 import { HttpService } from '../../services/http.service';
+import { Food } from '../../models/food';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,10 @@ export class HomeComponent
   {
     if (!this.searchInput || this.searchInput === '')
       return;
-
     this.router.navigate(['/search'], { queryParams: { title: this.searchInput } });
+  }
+
+  closeReadMore(){
+
   }
 }
