@@ -1,0 +1,22 @@
+.background-image {
+  width: 100%;
+  height: 52vh;
+  background-size: cover;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  z-index: -1;
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #ffcc4d;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
