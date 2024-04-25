@@ -54,7 +54,7 @@ export class RegisterComponent {
   }
 
   register(){
-
+   console.log(this.registerForm.value);
   }
 
   // public registerForm !: FormGroup;

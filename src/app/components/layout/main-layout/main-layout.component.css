@@ -17,17 +17,21 @@ a {
   cursor: pointer;
 }
 
-input[type="search"] {
+/* input[type="search"] {
   color: #fff;
   background-color: var(--bs-dark);
   border-color: var(--bs-gray);
-}
+} */
 
-input[type="search"]:focus {
+/* input[type="search"]:focus {
   color: #fff;
   background-color: var(--bs-dark);
   border-color: #fff;
   box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, .25);
+} */
+
+.form-control:focus {
+  box-shadow: 0 0 0.25rem rgb(219,78,8);
 }
 
 @media (max-width: 576px) {
@@ -96,10 +100,31 @@ input[type="search"]:focus {
 .btn-search {
   background-color: #fff;
   border-radius: 0px 5px 5px 0px;
+  background-color: #db4e08;
 }
 
-.btn-search{
-  background-color: #db4e08;
+.btn-search:focus {
+  box-shadow: none;
+}
+
+.btn-search:hover {
+  background-color:  #f35709;
+}
+
+
+.item-body {
+  margin-bottom: 2px solid #333;
+}
+
+.btn-payment {
+  padding: 0px 40px;
+  border-radius: 32px;
+  background-color: #ffcc4d;
+  color: #fff;
+}
+
+.btn-quantity {
+  padding: 0px 8px;
 }
 
 /* .container-offcanvas {

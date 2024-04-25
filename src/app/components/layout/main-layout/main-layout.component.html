@@ -2,16 +2,16 @@
   <div class="container d-flex">
     <!-- <a routerLink="/" class="d-block align-items-center text-decoration-none m-auto"></a> -->
     <ul class="navbar-nav flex-row flex-wrap">
-      <li class="nav-item col-3 col-lg-auto">
+      <li class="nav-item col-4 col-lg-auto">
         <a href="">
           <img src="../../../../assets/images/logo/logo.png" style="width: 90px; height: 70px" alt=""
-            class="home-text d-none d-sm-block nav-link py-2 px-0 img-fluid" />
+            class="home-text d-none d-md-block nav-link py-2 px-0 img-fluid" />
         </a>
       </li>
-      <li class="nav-item col-3 col-lg-auto d-none d-sm-block mt-3">
+      <li class="nav-item col-4 col-lg-auto d-none d-md-block mt-3">
         <div class="dropdown">
-          <button class="btn rounded-1 btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+          <button class="btn rounded-1 btn-light dropdown-toggle fw-semibold" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" style="color: rgb(219,78,8)">
             Quy Nhơn
           </button>
           <ul class="dropdown-menu animate slideIn">
@@ -21,10 +21,10 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item col-3 col-lg-auto d-none d-sm-block mt-3">
+      <li class="nav-item col-4 col-lg-auto d-none d-md-block mt-3">
         <div class="dropdown">
-          <button class="btn rounded-1 btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
+          <button class="btn rounded-1 btn-light dropdown-toggle fw-bolder" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false" style="color: rgb(219,78,8)">
             Tất cả
           </button>
           <ul class="dropdown-menu animate slideIn">
@@ -38,7 +38,7 @@
     <form class="flex-grow-1 mx-lg-3">
       <div class="input-group">
         <input type="text" class="form-control border-0" [ngModel] #searchInput placeholder="Tìm món ngay..."
-          aria-describedby="quick-search" />
+          aria-describedby="quick-search" spellcheck="false" />
         <button class="btn btn-search" type="button" id="quick-search" routerLink="search">
           <img src="../../../../assets/images/icons/icon-header/search.png" alt="" style="width: 20px; height: 20px;">
         </button>
@@ -48,7 +48,7 @@
     <hr class="d-lg-none" />
 
     <ul class="navbar-nav flex-row flex-wrap">
-      <li class="nav-item col-3 col-sm-auto">
+      <li class="nav-item col-4 col-sm-auto">
         <button class="btn btn-light outline py-2" (click)="toggleTheme()">
           <img src="../../../../assets/images/icons/icon-header/moon.png"
           alt=""
@@ -63,16 +63,16 @@
         </button>
       </li>
 
-      <li class="nav-item col-3 col-lg-auto">
+      <li class="nav-item col-4 col-lg-auto">
         <button class="btn btn-light outline py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-          aria-controls="offcanvasScrolling">
+          aria-controls="offcanvasScrolling" role="button">
           <img src="../../../../assets/images/icons/icon-header/shopping-cart.png"
           alt=""
           title="Giỏ hàng"
           style="width: 25px; height: 25px;">
         </button>
       </li>
-      <li class="nav-item col-3 col-lg-auto">
+      <li class="nav-item col-4 col-lg-auto">
         <button routerLink="profile" class="btn btn-light outline py-2">
           <img src="../../../../assets/images/icons/icon-header/user.png"
           alt=""
@@ -85,17 +85,93 @@
 </nav>
 
 <div class="container-offcanvas">
-  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling"
+  <div class="offcanvas offcanvas-end " data-bs-scroll="true" tabindex="-1" id="offcanvasScrolling"
   aria-labelledby="offcanvasScrollingLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title fw-bold" id="offcanvasScrollingLabel">Giỏ hàng</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <p>Content</p>
+    <div class="item-body py-2">
+      <div class="container mb-2">
+        <div class="row">
+          <div class="col-md-3 ps-0">
+            <img
+              src="https://food-cms.grab.com/compressed_webp/items/VNITE20230620075021358372/photo/menueditor_item_3584b50293244e59bf634bf95a46bd1f_1687416267714786844.webp"
+              style="width: 99px; height: 99px; border-radius: 6px;" alt="">
+          </div>
+          <div class="col-md-9 ps-0">
+              <h5 class="text-center">Bún thịt nướng chả giò</h5>
+              <!-- <h5 class="">Giá</h5> -->
+          </div>
+        </div>
+      </div>
+      <div class="container mt-5">
+        <div class="row d-flex justify-content-betwen">
+          <div class="col-md-6 ps-0">
+            <div role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-warning rounded-circle">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <span class="btn-quantity border-0 text-center my-2">1</span>
+              <button type="button" class="btn btn-warning rounded-circle">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6 pe-0 text-end">
+            <span>20,000VNĐ</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 </div>
+
+<!-- <div class="container-offcanvas">
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="addFood" aria-labelledby="addFoodLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title text-center fw-bold" id="addfoodLabel">Thêm vào giỏ hàng</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 ps-0">
+            <img
+              src="https://food-cms.grab.com/compressed_webp/items/VNITE20230620075021358372/photo/menueditor_item_3584b50293244e59bf634bf95a46bd1f_1687416267714786844.webp"
+              style="width: 99px; height: 99px; border-radius: 6px;" alt="">
+          </div>
+          <div class="col-md-9 ps-0">
+              <h5 class="text-center">Bún thịt nướng chả giò</h5>
+              <h5 class="">Giá</h5>
+          </div>
+        </div>
+        <div class="food">
+          <p>Tên món ăn/Giá</p>
+        </div>
+        <div class="wrap-message">
+          <h5 class="message-text mt-3">Lời nhắn</h5>
+            <textarea class="text-area form-control" placeholder="VD:Không hành" spellcheck="false" id="floatingTextarea"></textarea>
+        </div>
+      </div>
+      <div class="container-footer d-flex justify-content-betwen mt-5">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-warning rounded-circle">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+          <span class="btn-quantity border-0 text-center my-2">1</span>
+          <button type="button" class="btn btn-warning rounded-circle">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+        </div>
+        <button class="btn-add btn ml-auto">Thêm vào giỏ</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 
 <router-outlet></router-outlet>
 
@@ -143,7 +219,7 @@
             Kết nối với chúng tôi
           </div> -->
       </div>
-      <div class="col-12 col-lg-4 mb-4">
+      <div class="col-12 col-lg-4 mb-1">
         <div class="row">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247992.89300283077!2d109.06288719981411!3d13.785567188577133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316f6c65736eabd9%3A0xd362348e5af3d559!2zUXV5IE5oxqFuLCBCw6xuaCDEkOG7i25oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1712807946411!5m2!1svi!2s"

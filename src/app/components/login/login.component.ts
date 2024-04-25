@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from '../../services/http.service';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
-import { AlertService } from '../../services/alert-service.service';
+import { AlertService, AlertType } from '../../services/alert-service.service';
 import { AuthGuardService } from '../../services/auth-guard.service';
 
 @Component({
@@ -42,26 +42,31 @@ export class LoginComponent {
       //   this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
       //   return;
       // }
-    const username = this.loginForm.value.username;
-    const password = this.loginForm.value.password;
 
-    const user = new User();
-    user.username = username;
-    user.password = password;
+      const username = this.loginForm.value.username;
+      const password = this.loginForm.value.password;
 
-    this.waiting = true;
+      const user = new User();
+      user.username = username;
+      user.password = password;
+
+      console.log(user);
+      this.waiting = true;
 
     this.httpService.login(user).subscribe({
       next: async res =>
       {
-      //   this.waiting = false;
+        console.log(res);
 
-      //   this.authGuardService.login(res.accessToken);
-      //   this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',
-      //     AlertType.success, 3, 'form-wrapper');
-      //   await new Promise(f => setTimeout(f, 3000));
-      //   this.router.navigate(['home']);
-      // }, error: err =>
+        this.waiting = false;
+
+        this.router.navigate(['home']);
+        // this.authGuardService.login(res.accessToken);
+        // this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',
+        //   AlertType.success, 3, 'form-wrapper');
+        // await new Promise(f => setTimeout(f, 3000));
+      },
+      // error: err =>
       // {
       //   this.waiting = false;
       //   switch (err.status)
@@ -78,7 +83,7 @@ export class LoginComponent {
       //       this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 0, 'form-wrapper');
       //       break;
       //   }
-      }
+      // }
     });
   }
 }

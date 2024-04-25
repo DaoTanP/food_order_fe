@@ -1,3 +1,10 @@
+
+h3 {
+  color: rgb(219,78,8);
+  font-family: 'Marmelad';
+}
+
+
 .wrap-message {
   border-top: 2px solid #f7f7f7;
 }
@@ -12,10 +19,14 @@
 }
 
 .btn-add-food {
-  padding: 0px 40px;
+  padding: 8px 40px;
   border-radius: 32px;
   background-color: #ffcc4d;
   color: #fff;
+}
+
+.btn-quantity {
+  padding: 0px 8px;
 }
 
 /* .container-footer {

@@ -11,5 +11,6 @@ export const mainLayoutRoute: Routes = [
     { path: 'home', component: HomeComponent},
     { path: 'profile', component: ProfileComponent},
     { path: 'search', component: FoodSearchComponent},
-    { path: 'food-details', component: FoodDetailsComponent},
+    { path: 'food', component: FoodDetailsComponent},
+    { path: 'food/:id', component: FoodDetailsComponent},
 ]

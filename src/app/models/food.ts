@@ -1,9 +1,9 @@
 export class Food
 {
     constructor(
-        public _id: string = '',
-        public title: string = '',
-        public overview: string = '',
+        public id: string = '',
+        public name: string = '',
+        public description: string = '',
         public images: string[] = [],
         public price: number = 0,
         public tags: string = '',

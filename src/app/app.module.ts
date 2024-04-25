@@ -20,6 +20,7 @@ import { FoodDetailsComponent } from './components/food-details/food-details.com
 import { FoodSearchComponent } from './components/food-search/food-search.component';
 import { FoodMenuComponent } from './components/food-menu/food-menu.component';
 import { SignatureDishComponent } from './components/signature-dish/signature-dish.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SignatureDishComponent } from './components/signature-dish/signature-di
     FoodSearchComponent,
     FoodMenuComponent,
     SignatureDishComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { SignatureDishComponent } from './components/signature-dish/signature-di
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    NgxPaginationModule
   ],
   providers: [
     provideClientHydration()

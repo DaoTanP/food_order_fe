@@ -7,8 +7,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class HttpService {
-  private FOOD_API_URL = '';
-  private USER_API_URL = '';
+  private FOOD_API_URL = 'http://localhost:8080';
+  private USER_API_URL = 'http://localhost:8080/auth';
   dataService: any;
   constructor(private httpClient: HttpClient) {}
 

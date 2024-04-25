@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './food-search.component.css'
 })
 export class FoodSearchComponent {
-
+  page:number = 1;
+  itemsPerPage:number = 4;
 }

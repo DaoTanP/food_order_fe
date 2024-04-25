@@ -8,10 +8,15 @@
   z-index: -1;
 }
 
+h3 {
+  bottom: 0;
+  color: #fff;
+}
+
 
 .carousel-control-prev,
 .carousel-control-next {
-  background-color: #ffcc4d;
+  background-color: #fff;
   width: 5vh;
   height: 5vh;
   border-radius: 50%;
@@ -19,4 +24,12 @@
   transform: translateY(-50%);
 }
 
+
+.carousel-control-next-icon {
+  background-image: url("https://www.svgrepo.com/download/166617/right-arrow.svg");
+}
+
+.carousel-control-prev-icon {
+  background-image: url("https://www.svgrepo.com/show/97099/left-arrow.svg");
+}
 
