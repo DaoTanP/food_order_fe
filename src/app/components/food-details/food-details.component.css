@@ -1,4 +1,11 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400..800&family=Great+Vibes&family=Marmelad&family=Red+Rose:wght@300..700&display=swap');
+
+h2 {
+  color: #ffcc4d;
+  /* text-shadow: 5px 5px 10px #efddae; */
+  font-family: 'Marmelad';
+}
 
 ::ng-deep .ngx-pagination {
   display: flex;
@@ -38,6 +45,6 @@
 }
 
 .breadcrumb-item a {
-  color: #ffcc4d;
+  color: rgb(219,78,8);
   text-decoration: none;
 }
