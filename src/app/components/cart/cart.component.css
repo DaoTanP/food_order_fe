@@ -1,0 +1,31 @@
+.breadcrum-line {
+  border-bottom: 2px solid #ffcc4d;
+}
+
+.breadcrumb-item a {
+  color: rgb(219,78,8);
+  text-decoration: none;
+}
+
+.card-shadow {
+  box-shadow: none;
+}
+
+.card-shadow-footer {
+  box-shadow: none;
+  border: none;
+}
+
+
+.text-name {
+  color: rgb(219,78,8);
+  font-family: 'Marmelad';
+}
+
+.btn-quantity {
+  padding: 0px 8px;
+}
+
+.btn-toolbar {
+  justify-content: flex-end;
+}
