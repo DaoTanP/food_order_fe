@@ -17,6 +17,19 @@ a {
   cursor: pointer;
 }
 
+.quantity {
+  background-color: #db4e08;
+  border-radius: 50%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  top: -5px;
+  left: 70%;
+  padding: 2px 10px;
+}
+
 /* input[type="search"] {
   color: #fff;
   background-color: var(--bs-dark);

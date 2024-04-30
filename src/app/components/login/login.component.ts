@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { AlertService, AlertType } from '../../services/alert-service.service';
 import { AuthGuardService } from '../../services/auth-guard.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent {
   constructor(
     private httpService: HttpService,
     private alertService: AlertService,
+    private dataService: DataService,
     private authGuardService: AuthGuardService,
     private router: Router,
   )
@@ -36,18 +38,18 @@ export class LoginComponent {
 
   public login (): void
   {
-      // this.alertService.clearAlert();
-      // if (!this.loginForm.valid)
-      // {
-      //   this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
-      //   return;
-      // }
+      this.alertService.clearAlert();
+      if (!this.loginForm.valid)
+      {
+        this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
+        return;
+      }
 
       const username = this.loginForm.value.username;
       const password = this.loginForm.value.password;
 
       const user = new User();
-      user.username = username;
+      user.userName = username;
       user.password = password;
 
       console.log(user);
@@ -61,29 +63,34 @@ export class LoginComponent {
         this.waiting = false;
 
         this.router.navigate(['home']);
+        this.dataService.setSession('access_token', res.jwt);
         // this.authGuardService.login(res.accessToken);
         // this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',
         //   AlertType.success, 3, 'form-wrapper');
         // await new Promise(f => setTimeout(f, 3000));
       },
-      // error: err =>
-      // {
-      //   this.waiting = false;
-      //   switch (err.status)
-      //   {
-      //     case 404:
-      //       this.alertService.appendAlert('Tên đăng nhập hoặc mật khẩu không đúng', AlertType.danger, 0, 'form-wrapper');
-      //       break;
+      error: err =>
+      {
+        this.waiting = false;
+        switch (err.status)
+        {
+          case 400:
 
-      //     case 0:
-      //       this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 0, 'form-wrapper');
-      //       break;
+          break;
 
-      //     default:
-      //       this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 0, 'form-wrapper');
-      //       break;
-      //   }
-      // }
+          case 404:
+            this.alertService.appendAlert('Tên đăng nhập hoặc mật khẩu không đúng', AlertType.danger, 0, 'form-wrapper');
+            break;
+
+          case 0:
+            this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 0, 'form-wrapper');
+            break;
+
+          default:
+            this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 0, 'form-wrapper');
+            break;
+        }
+      }
     });
   }
 }

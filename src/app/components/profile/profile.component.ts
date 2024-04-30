@@ -52,36 +52,23 @@ export class ProfileComponent
 
   setData ()
   {
-    // this.waiting = true;
-    // this.authGuardService.userData.subscribe({
-    //   next: res =>
-    //   {
-    //     this.userInfo.value = res;
-    //     this.editInfoForm.setValue({
-    //       displayName: this.userInfo.displayName,
-    //       dateOfBirth: this.userInfo.dob?.toISOString().split('T')[0],
-    //       gender: this.userInfo.gender,
-    //       phoneNumber: this.userInfo.phoneNumber,
-    //       email: this.userInfo.email,
-    //       address: this.userInfo.address,
-    //     });
-    //   }, error: err =>
-    //   {
-    //     switch (err.status)
-    //     {
-    //       case 0:
-    //         this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
-    //         break;
+    this.waiting = true;
+    this.httpService.getUserInfo().subscribe({
+      next: async res =>
+      {
+        console.log(res);
 
-    //       default:
-    //         this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
-    //         break;
-    //     }
-    //   }
-    // });
-    // this.getFavorite();
-    // this.getBorrowHistory();
-    // this.waiting = false;
+        this.waiting = false;
+      },
+      error: err =>
+      {
+        this.waiting = false;
+        switch (err.status)
+        {
+
+        }
+      }
+    });
   }
 
   getFavorite ()

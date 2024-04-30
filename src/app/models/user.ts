@@ -4,7 +4,7 @@ export class User
 {
   constructor(
     public _id: string = "",
-    public username: string = "",
+    public userName: string = "",
     public password: string = "",
     public displayName: string = "",
     public address: string | null = null,
@@ -22,7 +22,7 @@ export class User
   public set value (u: User)
   {
     this._id = u._id;
-    this.username = u.username;
+    this.userName = u.userName;
     this.password = u.password;
     this.displayName = u.displayName;
     this.address = u.address;

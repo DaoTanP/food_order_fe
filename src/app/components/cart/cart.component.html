@@ -8,20 +8,19 @@
     </div>
   </nav>
 </div>
-<!-- <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
-  aria-controls="offcanvasScrolling">Enable body scrolling</button>
 
-<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-  id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <p>Content.</p>
-  </div>
+<!-- Khi không có sản phẩm nào trong giỏ hàng -->
+<!-- <div class="container">
+  <img src="https://food.grab.com/static/images/ilus-basket-empty.svg" alt="" style="width: 100%; height: 300px;">
+  <h2 class="text-center text-warning">Không có sản phẩm nào để hiển thị</h2>
+  <h5 class="text-muted text-center">Vui lòng chọn thêm các sản phẩm vào giỏ hàng</h5>
+</div>
+<div class="text-center">
+  <button routerLink="/home" class="btn btn-warning mb-4 rounded-3" style="color: #fff">Đặt ngay</button>
 </div> -->
 
+
+<!-- Khi có sản phẩm trong giỏ hàng -->
 <div class="container">
   <div class="py-3">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -36,6 +35,9 @@
         <div class="card rounded-3 mb-3">
           <div class="card-body p-3">
             <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-1 col-lg-1 col-xl-1 text-start">
+                <input type="checkbox" class="checkbox">
+              </div>
               <div class="col-md-2 col-lg-2 col-xl-2">
                 <img
                   src="https://tea-3.lozi.vn/v1/images/resized/com-tam-sa-bi-chuong-ha-noi-quan-dong-da-ha-noi-1681097569201834611-eatery-avatar-1681097569?w=640&type=s"
@@ -46,16 +48,6 @@
                 <p class="text-muted">Cơm tấm ngon</p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <!-- <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2 btn-warning"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                  <i class="fas fa-minus rounded-circle"></i>
-                </button>
-                <input id="form1" min="0" name="quantity" value="2" type="number"
-                  class="form-control form-control-sm" />
-                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
-                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                  <i class="fas fa-plus"></i>
-                </button> -->
 
                 <button type="button" class="btn btn-warning rounded-circle py-0" >
                   <i class="fa-solid fa-plus" style="color: #fff"></i>
@@ -68,13 +60,13 @@
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                 <h5 class="mb-0">Price: VNĐ</h5>
               </div>
+
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="/cart" class="text-warning"><i class="fas fa-trash fa-lg"></i></a>
               </div>
             </div>
           </div>
         </div>
-
         <div class="container card card-shadow">
           <div class="card-body p-4 text-total">
             <div class="float-end">
@@ -91,7 +83,10 @@
         </div>
 
         <div>
-          <p class="mt-0 mb-4 d-flex justify-content-end fst-italic"><span class="fw-semibold">*Lưu ý: </span>Hệ thống hiện tại chỉ thanh toán bằng tiền mặt</p>
+          <p class="mt-0 mb-4 d-flex justify-content-end fst-italic">
+            <span class="fw-semibold">*Lưu ý:
+            </span>Hệ thống hiện tại chỉ thanh toán bằng tiền mặt
+          </p>
         </div>
 
         <div class="container card card-shadow-footer pe-0">
