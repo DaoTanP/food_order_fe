@@ -4,6 +4,8 @@ import { User } from '../../../models/user';
 import { DataService } from '../../../services/data.service';
 import { AuthGuardService } from '../../../services/auth-guard.service';
 import { Router } from '@angular/router';
+import { CartService } from '../../../services/cart.service';
+import { Food } from '../../../models/food';
 
 @Component({
   selector: 'app-main-layout',
@@ -21,15 +23,18 @@ export class MainLayoutComponent {
 
   protected searchInput: string = '';
 
+  protected cartItems!: Observable<Food[]>;
+
   get isLoggedIn () { return this};
 
-  constructor(private dataService: DataService, private authGuardService: AuthGuardService, private router: Router)
+  constructor(
+    // private router: Router,
+    // private dataService: DataService,
+    private authGuardService: AuthGuardService,
+    private cartService: CartService)
   {
-    // this.switchThemeFunction = this.dataService.getData('switchTheme');
-    // this.setThemeFunction = this.dataService.getData('setTheme');
-    // this.getThemeFunction = this.dataService.getData('getTheme');
-
     this.user = authGuardService.userData;
+    this.cartItems = this.cartService.getAll();
   }
 
 

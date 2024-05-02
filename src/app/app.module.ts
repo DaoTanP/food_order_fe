@@ -19,8 +19,8 @@ import { FoodScrollListComponent } from './components/food-scroll-list/food-scro
 import { FoodDetailsComponent } from './components/food-details/food-details.component';
 import { FoodSearchComponent } from './components/food-search/food-search.component';
 import { FoodMenuComponent } from './components/food-menu/food-menu.component';
-import { SignatureDishComponent } from './components/signature-dish/signature-dish.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BannerSliderComponent } from './components/banner-slider/banner-slider.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FoodDetailsComponent,
     FoodSearchComponent,
     FoodMenuComponent,
-    SignatureDishComponent,
+    BannerSliderComponent,
 
   ],
   imports: [

@@ -3,7 +3,7 @@ const defaultAvatarImageUrl = 'https://cdn-icons-png.flaticon.com/512/3135/31357
 export class User
 {
   constructor(
-    public _id: string = "",
+    public id: string = "",
     public userName: string = "",
     public password: string = "",
     public displayName: string = "",
@@ -21,7 +21,7 @@ export class User
 
   public set value (u: User)
   {
-    this._id = u._id;
+    this.id = u.id;
     this.userName = u.userName;
     this.password = u.password;
     this.displayName = u.displayName;

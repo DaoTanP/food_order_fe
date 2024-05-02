@@ -3,10 +3,8 @@
     <!-- <a routerLink="/" class="d-block align-items-center text-decoration-none m-auto"></a> -->
     <ul class="navbar-nav flex-row flex-wrap">
       <li class="nav-item col-4 col-lg-auto">
-        <a href="">
-          <img src="../../../../assets/images/logo/logo.png" style="width: 90px; height: 70px" alt=""
+          <img routerLink="/home" src="../../../../assets/images/logo/logo.png" style="width: 90px; height: 70px; cursor: pointer;" alt=""
             class="home-text d-none d-md-block nav-link py-2 px-0 img-fluid" />
-        </a>
       </li>
       <li class="nav-item col-4 col-lg-auto d-none d-md-block mt-3">
         <div class="dropdown">
@@ -48,20 +46,20 @@
     <hr class="d-lg-none" />
 
     <ul class="navbar-nav flex-row flex-wrap">
-      <li class="nav-item col-4 col-sm-auto">
+      <!-- <li class="nav-item col-4 col-sm-auto">
         <button class="btn btn-light outline py-2" (click)="toggleTheme()">
           <img src="../../../../assets/images/icons/icon-header/moon.png"
           alt=""
           title="Đổi theme"
           style="width: 25px; height: 25px;">
-          <!-- <span *ngIf="isDark">
+          <span *ngIf="isDark">
               <i class="icon fa-solid fa-circle"></i>
             </span>
             <span *ngIf="!isDark">
               <i class="icon fa-solid fa-circle-half-stroke"></i>
-            </span> -->
+            </span>
         </button>
-      </li>
+      </li> -->
 
       <li class="nav-item col-4 col-lg-auto reactive">
         <button routerLink="/cart" class="btn btn-light outline py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
@@ -70,7 +68,7 @@
           alt=""
           title="Giỏ hàng"
           style="width: 25px; height: 25px;">
-          <span class="quantity">0</span>
+          <span class="quantity">{{(cartItems | async)?.length}}</span>
         </button>
       </li>
       <li class="nav-item col-4 col-lg-auto">
@@ -181,13 +179,11 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-lg-4 mb-4 d-flex justify-content-center">
-        <a href="">
-          <img src="../../../../assets/images/logo/logo.png"
-          style="width: 260px; height: 150px"
-          alt=""
-          title="Logo Foodly"
-          class="img-fluid" />
-        </a>
+        <img routerLink="/home" src="../../../../assets/images/logo/logo.png"
+        style="width: 260px; height: 150px; cursor: pointer;"
+        alt=""
+        title="Logo Foodly"
+        class="img-fluid" />
       </div>
       <div class="col-12 col-lg-4">
         <div class="row w-100 mt-5 mb-0">

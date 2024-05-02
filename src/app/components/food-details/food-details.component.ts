@@ -13,14 +13,14 @@ export class FoodDetailsComponent implements OnInit {
   itemsPerPage:number = 4;
   totalFood:any;
 
-  constructor(private productService: FoodService) { }
+  constructor(private foodService: FoodService) { }
 
   ngOnInit(): void {
     this.getAll();
   }
 
   getAll(){
-    this.productService.getAll().subscribe((res:any)=>{
+    this.foodService.getAll().subscribe((res:any)=>{
       this.food = res
     })
   }
