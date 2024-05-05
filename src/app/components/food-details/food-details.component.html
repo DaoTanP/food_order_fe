@@ -1,13 +1,13 @@
 <div class="container">
   <nav class="mt-2 fs-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb fw-bold">
-      <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Cơm</li>
+      <li class="breadcrumb-item"><a routerLink="/home">Trang chủ</a></li>
+      <li class="breadcrumb-item active" aria-current="page" style="text-transform: capitalize;">{{foodType}}</li>
     </ol>
   </nav>
 </div>
 <div class="container">
-  <h2 class="fw-semibold mt-4 text-tag">Bạn muốn tìm Cơm ư ? Có ngay đây !!!</h2>
+  <h2 class="fw-semibold mt-4 text-tag">Bạn muốn tìm <span style="text-transform: capitalize; color: rgb(219,78,8)">{{foodType}}</span> ư ? Có ngay đây !!!</h2>
 </div>
 <div class="container">
   <div class="mt-4 mb-4">
@@ -21,7 +21,12 @@
             <h5 class="card-title fw-bold">{{item.name}}</h5>
             <p class="card-text">{{item.description}}</p>
             <p class="card-text text-danger">{{item.price | currency: 'VND'}}</p>
-            <a href="/cart" class="btn btn-warning">Thêm vào giỏ hàng</a>
+            <!-- <a href="/cart" class="btn btn-warning">Thêm vào giỏ hàng</a> -->
+            <button class="btn-add-food" (click)="addToCart(item)">
+              <i class="fa-solid fa-cart-plus" style="color: #fff;">
+              </i>
+              Thêm vào giỏ hàng
+            </button>
           </div>
         </div>
       </div>

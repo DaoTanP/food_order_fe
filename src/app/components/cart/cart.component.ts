@@ -68,6 +68,20 @@ export class CartComponent implements OnInit  {
     })
   }
 
+  increaseQuantity(item: any){
+    if(item.quantity != 0) {
+      item.quantity += 1;
+      item.total = item.price * item.quantity;
+    }
+  }
+
+  decreaseQuantity(item: any){
+    if(item.quantity != 1) {
+      item.quantity -= 1;
+      item.total = item.price * item.quantity;
+    }
+  }
+
   removeFromCart(food:Food) {
     this.cartService.removeFromCart(food);
   }

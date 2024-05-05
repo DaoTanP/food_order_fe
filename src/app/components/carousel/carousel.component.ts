@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { privateDecrypt } from 'crypto';
 import { url } from 'inspector';
-import { AlertType } from '../../services/alert-service.service';
+import { AlertService, AlertType } from '../../services/alert-service.service';
 import { Food } from '../../models/food';
 import { CartService } from '../../services/cart.service';
 
@@ -12,7 +12,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class CarouselComponent
 {
-  @Input() foods: Food[] | null = [
+  protected foods: Food[] | null = [
     {
       id: 1,
       name: 'Mì Đặc Biệt VIP ( Có Thanh Cua hoặc Tôm )',
@@ -63,7 +63,7 @@ export class CarouselComponent
     speed: 250,
   }
 
-  constructor(private cartService: CartService){}
+  constructor(private cartService: CartService, private alertService: AlertService ){}
 
   active = 0;
 
@@ -77,21 +77,22 @@ export class CarouselComponent
     this.active = e.currentSlide;
   }
 
-  increaseQuantity(item: any){
-    if(item.quantity != 0) {
-      item.quantity += 1;
-      item.total = item.price * item.quantity;
-    }
-  }
+  // increaseQuantity(item: any){
+  //   if(item.quantity != 0) {
+  //     item.quantity += 1;
+  //     item.total = item.price * item.quantity;
+  //   }
+  // }
 
-  decreaseQuantity(item: any){
-    if(item.quantity != 1) {
-      item.quantity -= 1;
-      item.total = item.price * item.quantity;
-    }
-  }
+  // decreaseQuantity(item: any){
+  //   if(item.quantity != 1) {
+  //     item.quantity -= 1;
+  //     item.total = item.price * item.quantity;
+  //   }
+  // }
 
   addToCart(item: Food){
     this.cartService.addToCart(item);
+    this.alertService.appendAlert('Thêm vào giỏ hàng thành công', AlertType.success, 30, 'alert-container');
   }
 }

@@ -17,12 +17,14 @@ export class CartService {
     return of(this.foodInCart);
   }
 
-  addToCart(food: Food) {
+  addToCart(foodToAdd: Food) {
+    const food = Object.create(foodToAdd);
     const index = this.foodInCart.findIndex(x => x.id === food.id);
     if (index !== -1){
       const foodToUpdate = this.foodInCart[index];
       foodToUpdate.quantity += food.quantity;
-      this.foodInCart.splice(index, 1, foodToUpdate);
+
+      // this.foodInCart.splice(index, 1, foodToUpdate);
       return;
     }
 

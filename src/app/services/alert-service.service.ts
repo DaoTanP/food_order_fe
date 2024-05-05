@@ -15,7 +15,7 @@ export class AlertService
       alertPlaceholder = document.body;
 
     const alert = document.createElement('div');
-    alert.className = `alert alert-${type.valueOf()} alert-dismissible mb-2 rounded-0 border-0`;
+    alert.className = `alert alert-${type.valueOf()} alert-dismissible mb-0 rounded-2 border-0 shadow`;
     if (sticky)
       alert.classList.add('position-fixed top-0 w-100');
     alert.style.zIndex = "2000";
@@ -31,7 +31,7 @@ export class AlertService
       setTimeout(() =>
       {
         this.clearOneAlert(alert);
-      }, autoHideInSecond * 1000);
+      }, autoHideInSecond * 100);
     }
   }
 

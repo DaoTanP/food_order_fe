@@ -28,7 +28,4 @@ export class HomeComponent
     this.router.navigate(['/search'], { queryParams: { title: this.searchInput } });
   }
 
-  closeReadMore(){
-
-  }
 }

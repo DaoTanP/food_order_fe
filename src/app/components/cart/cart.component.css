@@ -17,6 +17,10 @@
   cursor: auto;
 }
 
+.item-border {
+  border-bottom: 1px solid #ccc;
+}
+
 input[type="checkbox"] {
   width: 20px;
   height: 20px;

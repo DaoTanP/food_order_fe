@@ -14,10 +14,6 @@ import { Food } from '../../../models/food';
 })
 export class MainLayoutComponent {
 
-  protected switchThemeFunction: any = undefined;
-  protected setThemeFunction: any = undefined;
-  protected getThemeFunction: any = undefined;
-  protected isDark: boolean = false;
   protected isScrolled: boolean = false;
   protected user: Observable<User | undefined> = of(undefined);
 
@@ -35,12 +31,6 @@ export class MainLayoutComponent {
   {
     this.user = authGuardService.userData;
     this.cartItems = this.cartService.getAll();
-  }
-
-
-  toggleTheme ()
-  {
-
   }
 
 }

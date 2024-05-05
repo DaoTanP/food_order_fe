@@ -13,9 +13,9 @@
             Quy Nhơn
           </button>
           <ul class="dropdown-menu animate slideIn">
-            <li><a class="dropdown-item" href="#">Địa chỉ 1</a></li>
-            <li><a class="dropdown-item" href="#">Địa chỉ 2</a></li>
-            <li><a class="dropdown-item" href="#">Địa chỉ 3</a></li>
+            <li><a class="dropdown-item" routerLink="/search">Địa chỉ 1</a></li>
+            <li><a class="dropdown-item" routerLink="/search">Địa chỉ 2</a></li>
+            <li><a class="dropdown-item" routerLink="/search">Địa chỉ 3</a></li>
           </ul>
         </div>
       </li>
@@ -26,9 +26,9 @@
             Tất cả
           </button>
           <ul class="dropdown-menu animate slideIn">
-            <li><a class="dropdown-item" href="#">Món Khô</a></li>
-            <li><a class="dropdown-item" href="#">Món Nước</a></li>
-            <li><a class="dropdown-item" href="#">Nước Uống</a></li>
+            <li><a class="dropdown-item" routerLink="/search">Món Khô</a></li>
+            <li><a class="dropdown-item" routerLink="/search">Món Nước</a></li>
+            <li><a class="dropdown-item" routerLink="/search">Nước Uống</a></li>
           </ul>
         </div>
       </li>
@@ -60,7 +60,6 @@
             </span>
         </button>
       </li> -->
-
       <li class="nav-item col-4 col-lg-auto reactive">
         <button routerLink="/cart" class="btn btn-light outline py-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
           aria-controls="offcanvasScrolling" role="button">
@@ -171,7 +170,10 @@
   </div>
 </div> -->
 
-
+  <div id="alert-container"
+  class="position-fixed w-50 end-0 d-flex flex-column gap-2"
+  style="bottom: 1rem; z-index: 2000;">
+  </div>
 <router-outlet></router-outlet>
 
 <!-- Footer -->
