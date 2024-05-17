@@ -1,8 +1,8 @@
-
 .background-images {
-  background-size: cover;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
   background-image:
-  url("https://img.freepik.com/premium-vector/fast-food-snacks-seamless-pattern-drinks-dessert-isolated-blue_71374-224.jpg?w=740");
+    url("https://stories.freepiklabs.com/storage/16334/Cooking_Mesa-de-trabajo-1.svg");
   background-attachment: fixed;
   height: 100dvh;
   overflow: auto;
@@ -44,7 +44,8 @@ input.ng-invalid.ng-touched {
   border-color: #dc3545 !important;
 }
 
-.fa-eye, .fa-eye-slash {
+.fa-eye,
+.fa-eye-slash {
   cursor: pointer;
 }
 
@@ -72,5 +73,3 @@ input.ng-invalid.ng-touched {
   height: 1px;
   background: #cccc;
 }
-
-

@@ -1,118 +1,19 @@
-<div class="container position-relative z-3 mb-5 mt-3">
-  <div class="row px-0 g-2">
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="/food" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://cdn.tgdd.vn/2021/10/CookDish/cach-lam-com-tron-thom-ngon-bang-noi-com-dien-tien-cho-nguoi-avt-1200x676.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div class="">
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Cơm</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu thơm</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://phothang.com/upload/product/07bdf336f4b53feb66a4-6305.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div>
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Phở</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu dở</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://cdn.tgdd.vn/2021/06/CookProduct/chaohenxaocay-1200x676.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div class="">
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Cháo</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu đỉnh</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://cdn.tgdd.vn/Files/2020/10/10/1297715/chieu-dai-ca-nha-voi-mon-ga-quay-me-da-gion-thom-ngon-nuc-mui-202112311102389303.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div>
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Gà</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu ngon</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
+<div *ngIf="error" class="container position-relative z-3 mb-5 mt-3">
+  <div class="d-flex justify-content-center align-items-center">
+    Server Error
   </div>
-  <div class="row px-0 g-2 mt-2">
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://giadinh.mediacdn.vn/zoom/740_463/2017/bun-1498639285275.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div class="">
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Bún</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu thơm</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://i.ex-cdn.com/vntravellive.com/files/news/2023/05/15/luu-ngay-5-quan-banh-mi-ngon-nen-thu-tai-sai-gon-151953.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div>
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Bánh mì</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu dở</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="/" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://heyyofoods.com/wp-content/uploads/2023/07/ca-vien-chien.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div class="">
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Ăn vặt</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu đỉnh</p> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-3">
-      <div class="card bg-warning text-white border-0" routerLink="" routerLinkActive="active">
-        <img class="card-img object-fit-cover"
-          src="https://aglobal.vn/upload/images/%C4%91%E1%BB%93%20u%E1%BB%91ng%20kh%C3%B4ng%20c%E1%BB%93n%20l%C3%A0%20g%C3%AC.jpg"
-          alt="Title" />
-        <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
-        <div>
-          <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
-            <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1">Nước uống</h5>
-            <!-- <p class="card-text text-wrapped max-line-2">Siêu ngon</p> -->
-          </div>
-        </div>
-      </div>
+</div>
+
+<div *ngIf="!(categories | async)" class="container position-relative z-3 mb-5 mt-3">
+  <div class="d-flex justify-content-center align-items-center">
+    Loading...
+  </div>
+</div>
+
+<div *ngIf="(categories | async)" class="container position-relative z-3 mb-5 mt-3">
+  <div class="d-flex row-gap-4 flex-wrap w-100 justify-content-between">
+    <div *ngFor="let category of (categories | async)" class="col-3">
+      <app-card-category [category]="category"></app-card-category>
     </div>
   </div>
 </div>

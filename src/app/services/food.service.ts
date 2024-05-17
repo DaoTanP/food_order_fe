@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   const httpOptions = {
     headers:new HttpHeaders({'Content-Type':'Application/json'})
   }
-  const API_FOOD = 'http://localhost:3000/food';
+const API_FOOD = 'http://localhost:3000/food';
 
   @Injectable({
     providedIn: 'root'

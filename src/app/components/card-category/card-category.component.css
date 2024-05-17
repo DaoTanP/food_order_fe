@@ -1,0 +1,12 @@
+h5 {
+  color: rgb(219, 78, 8);
+  font-family: 'Marmelad';
+}
+
+.card-menu {
+  background-color: #ffcc4d;
+}
+
+.card-menu:hover {
+  background-color: #efb41d;
+}

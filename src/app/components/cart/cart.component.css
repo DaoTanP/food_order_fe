@@ -3,7 +3,7 @@
 }
 
 .breadcrumb-item a {
-  color: rgb(219,78,8);
+  color: rgb(219, 78, 8);
   text-decoration: none;
 }
 
@@ -33,10 +33,13 @@ input[type="checkbox"] {
   color: #fff;
 }
 
-
 .text-name {
-  color: rgb(219,78,8);
+  color: rgb(219, 78, 8);
   font-family: 'Marmelad';
+}
+
+.btn-order:hover {
+  background-color: #efb41d;
 }
 
 .btn-quantity {

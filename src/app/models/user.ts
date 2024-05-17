@@ -11,7 +11,6 @@ export class User
     public email: string | null = null,
     public phoneNumber: string | null = null,
     public avatar: string | null = null,
-    // public favorite: string[] = [],
   )
 
   {

@@ -1,0 +1,13 @@
+<div class="card card-menu text-white border-0 text-capitalize" routerLink="/food/{{ category.categoryName }}"
+  routerLinkActive="active">
+  <img class="card-img object-fit-cover" src="{{ category.imageURL }}" alt="Title" />
+  <!-- <div class="card-shadow card-shadow-bottom card-shadow-o100"></div> -->
+  <div class="">
+    <div class="h-100 d-flex flex-column justify-content-end text-center p-2">
+      <h5 class="card-title text-wrapped max-line-2 fw-semibold mt-1 text-capitalize">
+        {{ category.categoryName }}
+      </h5>
+      <!-- <p class="card-text text-wrapped max-line-2">Siêu thơm</p> -->
+    </div>
+  </div>
+</div>

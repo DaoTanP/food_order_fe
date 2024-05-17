@@ -6,33 +6,22 @@
   font-family: "Varela Round", sans-serif;
 }
 
-
 .text-tag {
   color: #ffcc4d;
   font-family: 'Marmelad';
 }
 
-/* .background-images {
-  background-size: cover;
-  background-image:
-  url("https://media.istockphoto.com/id/833518366/vi/anh/set-%C4%91%E1%BB%93-%C4%83n-vi%E1%BB%87t-nam.jpg?s=1024x1024&w=is&k=20&c=MxmkqcR9rreFw7948E0a3xCsLlFj3CHDv1jtSQhelB8=");
-  background-attachment: fixed;
-  height: 100dvh;
-  overflow: auto;
-} */
-
 .h4-title {
   font-weight: 600;
   margin: auto;
-	letter-spacing: 0.0015em;
-	text-shadow: 0 1px #ffcc4d, -1px 0 #c0cbff, -1px 2px #ffcc4d, -2px 1px #c0cbff,
-		-2px 3px #ffcc4d, -3px 2px #ffdac0, -3px 4px #ffcc4d, -4px 3px #c0cbff,
-		-4px 5px #ffcc4d, -5px 4px #c0cbff, -5px 6px #ffcc4d, -6px 5px #c0cbff,
-		-6px 7px #ffcc4d, -7px 6px #c0cbff, -7px 8px #ffcc4d, -8px 7px #c0cbff;
-	text-align: center;
+  letter-spacing: 0.0015em;
+  text-shadow: 0 1px #ffcc4d, -1px 0 #c0cbff, -1px 2px #ffcc4d, -2px 1px #c0cbff,
+    -2px 3px #ffcc4d, -3px 2px #ffdac0, -3px 4px #ffcc4d, -4px 3px #c0cbff,
+    -4px 5px #ffcc4d, -5px 4px #c0cbff, -5px 6px #ffcc4d, -6px 5px #c0cbff,
+    -6px 7px #ffcc4d, -7px 6px #c0cbff, -7px 8px #ffcc4d, -8px 7px #c0cbff;
+  text-align: center;
 }
 
-/* Using component: Home, MenuFood */
 .card {
   overflow: hidden;
   cursor: pointer;
@@ -41,22 +30,23 @@
 
 .card-img {
   aspect-ratio: 16/9;
-  @supports not (aspect-ratio: 16 / 9) {
-      &::before {
-          float: left;
-          padding-top: 56.25%;
-          content: "";
-      }
 
-      &::after {
-          display: block;
-          content: "";
-          clear: both;
-      }
+  @supports not (aspect-ratio: 16 / 9) {
+    &::before {
+      float: left;
+      padding-top: 56.25%;
+      content: "";
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
   }
 }
 
-.btn-hover:hover{
+.btn-hover:hover {
   background-color: #db4e08;
 }
 
@@ -99,4 +89,3 @@
 .card-shadow-o100 {
   --opacity: 1;
 }
-

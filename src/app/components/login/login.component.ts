@@ -30,55 +30,50 @@ export class LoginComponent {
     private dataService: DataService,
     private authGuardService: AuthGuardService,
     private router: Router,
-  )
-  {
-    // if (authGuardService.isLoggedIn)
-      // router.navigate(['home']);
+  ) {
+    if (authGuardService.isLoggedIn)
+      router.navigate(['home']);
   }
 
-  public login (): void
-  {
-      this.alertService.clearAlert();
-      if (!this.loginForm.valid)
-      {
-        this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
-        return;
-      }
+  public login(): void {
+    this.alertService.clearAlert();
+    if (!this.loginForm.valid) {
+      this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 0, 'form-wrapper');
+      return;
+    }
 
-      const username = this.loginForm.value.username;
-      const password = this.loginForm.value.password;
+    const username = this.loginForm.value.username;
+    const password = this.loginForm.value.password;
 
-      const user = new User();
-      user.userName = username;
-      user.password = password;
+    const user = new User();
+    user.userName = username;
+    user.password = password;
 
-      console.log(user);
-      this.waiting = true;
+    // console.log(user);
+    this.waiting = true;
 
     this.httpService.login(user).subscribe({
-      next: async res =>
-      {
-        console.log(res);
+      next: async res => {
+        // console.log(res);
 
         this.waiting = false;
 
         this.router.navigate(['home']);
         this.dataService.setSession('access_token', res.jwt);
-        // this.authGuardService.login(res.accessToken);
-        // this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',
-        //   AlertType.success, 3, 'form-wrapper');
-        // await new Promise(f => setTimeout(f, 3000));
+        this.authGuardService.login(res.accessToken);
+        this.alertService.appendAlert('Đăng nhập thành công, chuyển hướng về trang chủ',
+          AlertType.success, 3, 'form-wrapper');
+        await new Promise(f => setTimeout(f, 3000));
       },
-      error: err =>
-      {
+      error: err => {
         this.waiting = false;
-        switch (err.status)
-        {
+        switch (err.status) {
           case 400:
 
-          break;
+            break;
 
           case 404:
+          case 401:
             this.alertService.appendAlert('Tên đăng nhập hoặc mật khẩu không đúng', AlertType.danger, 0, 'form-wrapper');
             break;
 

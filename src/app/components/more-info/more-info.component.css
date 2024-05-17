@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400..800&family=Great+Vibes&family=Marmelad&family=Red+Rose:wght@300..700&display=swap');
+
+h2 {
+  color: #ffcc4d;
+  /* text-shadow: 5px 5px 10px #efddae; */
+  font-family: 'Marmelad';
+}
+
+.wrap-message {
+  border-top: 1px solid #f7f7f7;
+}
+
+.message-text {
+  font-weight: 600;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.text-area {
+  margin-top: 10px;
+  /* resize: none; */
+}
+
+.btn-readmore {
+  color: rgb(219, 78, 8);
+  border: 1px solid rgb(219, 78, 8);
+  box-shadow: none;
+}
+
+.btn-readmore:hover {
+  font-weight: 500;
+  background-color: #fff;
+  color: #ffcc3d;
+  border-color: #ffcc4d;
+}
+
+.btn-readmore[aria-expanded="true"] {
+  display: none;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+li {
+  font-weight: 500;
+  font-size: 16px;
+}
+
+li::before {
+  content: url(https://food.grab.com/static/images/tick.svg);
+  margin-right: 4px;
+}
+
+p {
+  font-size: 16px;
+}

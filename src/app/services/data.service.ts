@@ -23,7 +23,7 @@ export class DataService
     this.data.set(key, value);
   }
 
-  removeData (key: string)
+  removeData(key: string)
   {
     return this.data.delete(key);
   }

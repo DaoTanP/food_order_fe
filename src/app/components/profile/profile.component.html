@@ -31,7 +31,7 @@
         thông tin
       </button>
       <button class="btn btn-outline-danger py-1 mb-2 d-block w-100" data-bs-toggle="modal"
-        data-bs-target="#deleteModal">Xóa tài khoản
+        data-bs-target="#logoutModal" (click)="logOut()">Đăng xuất
       </button>
     </div>
     <div class="col">
@@ -40,20 +40,14 @@
           <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button"
             role="tab" aria-controls="info" aria-selected="true">Thông tin</button>
         </li>
-        <!-- <li class="nav-item" role="presentation">
-          <button class="nav-link" id="favorite-tab" data-bs-toggle="tab" data-bs-target="#favorite" type="button"
-            role="tab" aria-controls="favorite" aria-selected="false">Yêu thích</button>
-        </li> -->
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-list" type="button"
             role="tab" aria-controls="order-list" aria-selected="false">Đơn hàng</button>
         </li>
-
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-panel" type="button"
             role="tab" aria-controls="password-panel" aria-selected="false">Đổi mật khẩu</button>
         </li>
-
       </ul>
       <div class="tab-content">
         <div class="tab-pane py-3 active position-relative" id="info" role="tabpanel" aria-labelledby="info-tab">
@@ -78,9 +72,46 @@
         </div>
 
         <div class="tab-pane py-3 position-relative" id="order-list" role="tabpanel" aria-labelledby="order-list">
-          <div>Đặt hàng thành công ! Đơn hàng đang vận chuyển đến cho bạn</div>
-          <div class="btn btn-warning me-3">Xem chi tiết</div>
-          <div class="btn btn-warning">Đã nhận được hàng</div>
+          <div class="mb-2">Đặt hàng thành công ! Đơn hàng đang vận chuyển đến cho bạn</div>
+          <button class="btn btn-warning me-3" data-bs-target="#detailsOrderModal" data-bs-toggle="modal">Xem chi
+            tiết</button>
+          <button class="btn btn-warning">Đã nhận được hàng</button>
+        </div>
+
+        <div class="modal fade" id="detailsOrderModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5 fw-bold text-warning" id="staticBackdropLabel">Chi tiết các đơn hàng của bạn
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                  <thead>
+                    <tr class="text-center">
+                      <th scope="col-md-4" class="text-start">#</th>
+                      <th scope="col-md-4">Món</th>
+                      <th scope="col-md-4">Giá</th>
+                      <th scope="col-md-4">Ngày mua</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of history; index as i">
+                      <th scope="row">{{i+1}}</th>
+                      <td style="cursor: pointer;" [routerLink]="'/food/' + item.foodId"><u>{{item.foodId}}</u></td>
+                      <td>{{item.price}}</td>
+                      <td>{{item.borrowDate}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Đóng cửa sổ</button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="tab-pane py-3" id="password-panel" role="tabpanel" aria-labelledby="password-tab">
@@ -104,8 +135,9 @@
           <div class="row mb-3">
             <div class="col-3"></div>
             <div class="col">
-              <button class="btn primary-btn"
-                [disabled]="!passwordNew.value || passwordNew.value !== passwordNew2.value">Thay đổi mật khẩu</button>
+              <button class="btn primary-btn" [disabled]="!passwordNew.value ||
+                passwordNew.value !== passwordNew2.value" (click)="changePassword(passwordNew.value)">Thay đổi mật
+                khẩu</button>
             </div>
           </div>
         </div>
@@ -118,7 +150,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="infoModalLabel">Sửa thông tin</h5>
+        <h5 class="modal-title fw-bold text-warning" id="infoModalLabel">Sửa thông tin</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -152,7 +184,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -168,4 +200,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

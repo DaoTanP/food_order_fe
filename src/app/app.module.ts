@@ -21,6 +21,8 @@ import { FoodSearchComponent } from './components/food-search/food-search.compon
 import { FoodMenuComponent } from './components/food-menu/food-menu.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BannerSliderComponent } from './components/banner-slider/banner-slider.component';
+import { CardCategoryComponent } from './components/card-category/card-category.component';
+import { MoreInfoComponent } from './components/more-info/more-info.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { BannerSliderComponent } from './components/banner-slider/banner-slider.
     FoodSearchComponent,
     FoodMenuComponent,
     BannerSliderComponent,
+    CardCategoryComponent,
+    MoreInfoComponent,
 
   ],
   imports: [

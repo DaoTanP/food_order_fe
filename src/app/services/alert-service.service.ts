@@ -3,13 +3,11 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AlertService
-{
+export class AlertService {
 
   constructor() { }
 
-  public appendAlert = (message: string, type: AlertType = AlertType.danger, autoHideInSecond: number = 0, containerId: string = "", sticky: boolean = false) =>
-  {
+  public appendAlert = (message: string, type: AlertType = AlertType.danger, autoHideInSecond: number = 0, containerId: string = "", sticky: boolean = false) => {
     let alertPlaceholder = document.getElementById(containerId);
     if (alertPlaceholder == null)
       alertPlaceholder = document.body;
@@ -26,36 +24,30 @@ export class AlertService
     ].join('');
 
     alertPlaceholder.prepend(alert);
-    if (autoHideInSecond > 0)
-    {
-      setTimeout(() =>
-      {
+    if (autoHideInSecond > 0) {
+      setTimeout(() => {
         this.clearOneAlert(alert);
       }, autoHideInSecond * 100);
     }
   }
 
-  public clearAlert (containerId: string = "")
-  {
+  public clearAlert(containerId: string = "") {
     let alertPlaceholder = document.getElementById(containerId);
     if (alertPlaceholder == null)
       alertPlaceholder = document.body;
 
     const alerts = document.querySelectorAll('.alert');
-    alerts.forEach(element =>
-    {
+    alerts.forEach(element => {
       element.remove();
     });
   }
 
-  public clearOneAlert (alert: Element)
-  {
+  public clearOneAlert(alert: Element) {
     alert.remove();
   }
 }
 
-export enum AlertType
-{
+export enum AlertType {
   info = "info",
   success = "success",
   warning = "warning",
