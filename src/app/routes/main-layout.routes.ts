@@ -4,6 +4,7 @@ import { ProfileComponent } from "../components/profile/profile.component";
 import { CartComponent } from "../components/cart/cart.component";
 import { FoodSearchComponent } from "../components/food-search/food-search.component";
 import { FoodDetailsComponent } from "../components/food-details/food-details.component";
+import { PaymentComponent } from "../components/payment/payment.component";
 
 export const mainLayoutRoute: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,4 +14,6 @@ export const mainLayoutRoute: Routes = [
   { path: 'search', component: FoodSearchComponent },
   { path: 'food', component: FoodDetailsComponent },
   { path: 'food/:id', component: FoodDetailsComponent },
+  { path: 'payment', component: PaymentComponent },
+
 ]

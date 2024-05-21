@@ -23,6 +23,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { BannerSliderComponent } from './components/banner-slider/banner-slider.component';
 import { CardCategoryComponent } from './components/card-category/card-category.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MoreInfoComponent } from './components/more-info/more-info.component';
     BannerSliderComponent,
     CardCategoryComponent,
     MoreInfoComponent,
+    PaymentComponent,
 
   ],
   imports: [

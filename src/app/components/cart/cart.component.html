@@ -2,7 +2,7 @@
   <nav class="fs-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <div class="breadcrum-line mb-4">
       <ol class="breadcrumb fw-bold">
-        <li class="breadcrumb-item"><a href="/home">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a routerLink="/home">Trang chủ</a></li>
         <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
       </ol>
     </div>
@@ -74,11 +74,11 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h1 class="modal-title fs-5">Xóa thức ăn</h1>
+                      <h1 class="modal-title fs-5 fw-semibold text-warning">Xóa thức ăn</h1>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                      Bạn có chắc chắn muốn xóa {{item.name}} khỏi giỏ hàng
+                      Bạn có chắc chắn muốn xóa <span class="text-name fw-semibold">{{item.name}}</span> khỏi giỏ hàng
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Hủy</button>
@@ -88,7 +88,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -113,23 +112,16 @@
           </div>
         </div>
 
-        <div>
-          <p class="mt-0 mb-4 d-flex justify-content-end fst-italic">
-            <span class="fw-semibold">*Lưu ý:
-            </span>Hệ thống hiện tại chỉ thanh toán bằng tiền mặt
-          </p>
-        </div>
-
         <div class="container card card-shadow-footer pe-0">
           <div class="card-body p-0">
-            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-toolbar py-3" role="toolbar" aria-label="Toolbar with button groups">
               <div class="btn-group me-2" role="group" aria-label="First group">
                 <button routerLink="/home" type="button" data-mdb-button-init data-mdb-ripple-init
                   class="btn border border-danger btn-block btn-lg">Mua thêm món</button>
               </div>
               <div class="btn-group me-2" role="group" aria-label="Second group">
-                <button routerLink="/cart" type="button" data-mdb-button-init data-mdb-ripple-init
-                  class="btn btn-warning btn-block btn-lg" (click)="order()">Đặt hàng</button>
+                <button routerLink="/payment" type="button" data-mdb-button-init data-mdb-ripple-init
+                  class="btn btn-warning btn-block btn-lg" (click)="order()">Thanh toán ngay</button>
               </div>
             </div>
           </div>
