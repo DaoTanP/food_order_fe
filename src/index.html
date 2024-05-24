@@ -13,8 +13,33 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reddit+Mono:wght@200..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+  <style>
+  </style>
 </head>
 <body>
   <app-root></app-root>
-</body>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="FoodlyChat"
+    agent-id="5cdcd860-f2e2-43e6-96c8-1e8d101b2790"
+    language-code="en">
+    <style>
+      df-messenger {
+        --df-messenger-bot-message: #ffcc4d;
+        --df-messenger-button-titlebar-color: #ffcc4d;
+        --df-messenger-chat-background-color: #fafafa;
+        --df-messenger-font-color: #fff;
+        --df-messenger-send-icon: #00adff;
+        --df-messenger-user-message: #13d309;
+        --df-messenger-chip-border-color:#0041C2;
+      }
+
+      df-messenger .df-messenger-send-icon {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/12222/12222589.png');
+        background-size: cover;
+      }
+      </style>
+  </df-messenger>
+  </body>
 </html>

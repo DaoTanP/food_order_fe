@@ -1,18 +1,20 @@
 <div *ngIf="error" class="container position-relative z-3 mb-5 mt-3">
-  <div class="d-flex justify-content-center align-items-center">
-    Server Error
-  </div>
+  <div class="d-flex justify-content-center align-items-center">Lỗi Server</div>
 </div>
 
-<div *ngIf="!(categories | async)" class="container position-relative z-3 mb-5 mt-3">
-  <div class="d-flex justify-content-center align-items-center">
-    Loading...
-  </div>
+<div
+  *ngIf="!(categories | async)"
+  class="container position-relative z-3 mb-5 mt-3"
+>
+  <div class="d-flex justify-content-center align-items-center">Đang tải</div>
 </div>
 
-<div *ngIf="(categories | async)" class="container position-relative z-3 mb-5 mt-3">
+<div
+  *ngIf="categories | async"
+  class="container position-relative z-3 mb-5 mt-3"
+>
   <div class="d-flex row-gap-4 flex-wrap w-100 justify-content-between">
-    <div *ngFor="let category of (categories | async)" class="col-3">
+    <div *ngFor="let category of categories | async" class="col-6 col-lg-3">
       <app-card-category [category]="category"></app-card-category>
     </div>
   </div>

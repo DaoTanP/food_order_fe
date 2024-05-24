@@ -4,20 +4,22 @@ import { Router } from '@angular/router';
 import { User } from '../../models/user';
 import { HttpService } from '../../services/http.service';
 import { DataService } from '../../services/data.service';
-import { AuthGuardService } from '../../services/auth-guard.service';
+import { AuthService } from '../../services/auth.service';
 import { AlertService, AlertType } from '../../services/alert-service.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
   protected waiting: boolean = false;
   protected userInfo: User = new User();
   protected history: any[] = [];
 
-  protected displayName: FormControl = new FormControl(null, [Validators.required]);
+  protected displayName: FormControl = new FormControl(null, [
+    Validators.required,
+  ]);
   protected phoneNumber: FormControl = new FormControl(null);
   protected email: FormControl = new FormControl(null);
   protected address: FormControl = new FormControl(null);
@@ -34,8 +36,8 @@ export class ProfileComponent {
     private httpService: HttpService,
     private dataService: DataService,
     private alertService: AlertService,
-    private authGuardService: AuthGuardService,
-    private router: Router,
+    private authGuardService: AuthService,
+    private router: Router
   ) {
     // if (!authGuardService.isLoggedIn)
     //   router.navigate(['/login']);
@@ -46,7 +48,7 @@ export class ProfileComponent {
   setData() {
     this.waiting = true;
     this.httpService.getUserInfo().subscribe({
-      next: async res => {
+      next: async (res) => {
         // console.log(res);
 
         this.waiting = false;
@@ -58,18 +60,28 @@ export class ProfileComponent {
           address: this.userInfo.address,
         });
       },
-      error: err => {
+      error: (err) => {
         this.waiting = false;
         switch (err.status) {
           case 0:
-            this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+            this.alertService.appendAlert(
+              'Không thể kết nối với máy chủ, vui lòng thử lại sau',
+              AlertType.danger,
+              5,
+              'alert-container'
+            );
             break;
 
           default:
-            this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+            this.alertService.appendAlert(
+              'Đã xảy ra lỗi, vui lòng thử lại sau',
+              AlertType.danger,
+              5,
+              'alert-container'
+            );
             break;
         }
-      }
+      },
     });
   }
 
@@ -83,30 +95,51 @@ export class ProfileComponent {
       .reduce((a, k) => ({ ...a, [k]: formValue[k] }), {});
 
     this.httpService.editUserInfo(filteredValue).subscribe({
-      next: res => {
+      next: (res) => {
         this.httpService.getUserInfo().subscribe((userInfo) => {
           this.userInfo.value = userInfo;
           this.waiting = false;
         });
 
-        this.alertService.appendAlert('Cập nhật thông tin thành công', AlertType.success, 30, 'alert-container');
-      }, error: err => {
+        this.alertService.appendAlert(
+          'Cập nhật thông tin thành công',
+          AlertType.success,
+          30,
+          'alert-container'
+        );
+      },
+      error: (err) => {
         this.waiting = false;
         switch (err.status) {
           case 400:
           case 409:
-            this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 30, 'alert-container');
+            this.alertService.appendAlert(
+              'Thông tin không hợp lệ, vui lòng kiểm tra lại',
+              AlertType.danger,
+              30,
+              'alert-container'
+            );
             break;
 
           case 0:
-            this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 30, 'alert-container');
+            this.alertService.appendAlert(
+              'Không thể kết nối với máy chủ, vui lòng thử lại sau',
+              AlertType.danger,
+              30,
+              'alert-container'
+            );
             break;
 
           default:
-            this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 30, 'alert-container');
+            this.alertService.appendAlert(
+              'Đã xảy ra lỗi, vui lòng thử lại sau',
+              AlertType.danger,
+              30,
+              'alert-container'
+            );
             break;
         }
-      }
+      },
     });
   }
 
@@ -127,15 +160,12 @@ export class ProfileComponent {
     //       case 404:
     //         this.alertService.appendAlert('Tài khoản không tồn tại', AlertType.danger, 5, 'alert-container');
     //         break;
-
     //       case 400:
     //         this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 5, 'alert-container');
     //         break;
-
     //       case 0:
     //         this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
     //         break;
-
     //       default:
     //         this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
     //         break;
@@ -156,31 +186,45 @@ export class ProfileComponent {
       fd.append('file', file);
 
       this.httpService.uploadAvatar(fd).subscribe({
-        next: res => {
+        next: (res) => {
           this.waiting = false;
-          this.alertService.appendAlert('Đổi ảnh đại diện thành công, tải lại trang để xem thay đổi', AlertType.success, 5, 'alert-container');
+          this.alertService.appendAlert(
+            'Đổi ảnh đại diện thành công, tải lại trang để xem thay đổi',
+            AlertType.success,
+            5,
+            'alert-container'
+          );
         },
-        error: err => {
+        error: (err) => {
           this.waiting = false;
           switch (err.status) {
             case 0:
-              this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+              this.alertService.appendAlert(
+                'Không thể kết nối với máy chủ, vui lòng thử lại sau',
+                AlertType.danger,
+                5,
+                'alert-container'
+              );
               break;
 
             default:
-              this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+              this.alertService.appendAlert(
+                'Đã xảy ra lỗi, vui lòng thử lại sau',
+                AlertType.danger,
+                5,
+                'alert-container'
+              );
               break;
           }
-        }
+        },
       });
-    }
+    };
 
     r.readAsArrayBuffer(file);
   }
 
   changePassword(newPassword: string) {
-    if (!newPassword)
-      return;
+    if (!newPassword) return;
 
     const data = {
       password: newPassword,
@@ -189,25 +233,46 @@ export class ProfileComponent {
     this.waiting = true;
 
     this.httpService.editUserInfo(data).subscribe({
-      next: res => {
+      next: (res) => {
         this.waiting = false;
-        this.alertService.appendAlert('Thay đổi mật khẩu thành công', AlertType.success, 5, 'alert-container');
-      }, error: err => {
+        this.alertService.appendAlert(
+          'Thay đổi mật khẩu thành công',
+          AlertType.success,
+          5,
+          'alert-container'
+        );
+      },
+      error: (err) => {
         this.waiting = false;
         switch (err.status) {
           case 400:
-            this.alertService.appendAlert('Thông tin không hợp lệ, vui lòng kiểm tra lại', AlertType.danger, 5, 'alert-container');
+            this.alertService.appendAlert(
+              'Thông tin không hợp lệ, vui lòng kiểm tra lại',
+              AlertType.danger,
+              5,
+              'alert-container'
+            );
             break;
 
           case 0:
-            this.alertService.appendAlert('Không thể kết nối với máy chủ, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+            this.alertService.appendAlert(
+              'Không thể kết nối với máy chủ, vui lòng thử lại sau',
+              AlertType.danger,
+              5,
+              'alert-container'
+            );
             break;
 
           default:
-            this.alertService.appendAlert('Đã xảy ra lỗi, vui lòng thử lại sau', AlertType.danger, 5, 'alert-container');
+            this.alertService.appendAlert(
+              'Đã xảy ra lỗi, vui lòng thử lại sau',
+              AlertType.danger,
+              5,
+              'alert-container'
+            );
             break;
         }
-      }
+      },
     });
   }
 
@@ -215,15 +280,11 @@ export class ProfileComponent {
     this.authGuardService.logOut();
     let navigateAfterLogOut = this.dataService.getData('navigateAfterLogOut');
 
-    if (navigateAfterLogOut)
-      navigateAfterLogOut(this.router);
+    if (navigateAfterLogOut) navigateAfterLogOut(this.router);
   }
-
 }
-
 
 // logOut (router: Router)
 // {
 //   router.navigate(['home']);
 // }
-

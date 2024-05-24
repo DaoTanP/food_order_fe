@@ -3,11 +3,12 @@ import { FoodService } from '../../services/food.service';
 import { Food } from '../../models/food';
 import { CartService } from '../../services/cart.service';
 import { DataService } from '../../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
   foodInCart: Food[] = [];
@@ -16,7 +17,11 @@ export class CartComponent implements OnInit {
   }
   selectAll = false;
 
-  constructor(private cartService: CartService, private dataService: DataService) { }
+  constructor(
+    private cartService: CartService,
+    private dataService: DataService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -24,8 +29,8 @@ export class CartComponent implements OnInit {
 
   getAll() {
     this.cartService.getAll().subscribe((res: Food[]) => {
-      this.foodInCart = res
-    })
+      this.foodInCart = res;
+    });
   }
 
   increaseQuantity(item: Food) {
@@ -44,11 +49,11 @@ export class CartComponent implements OnInit {
   toggleSelectAll() {
     console.log(this.selectAll);
     if (this.selectAll) {
-      this.foodInCart.forEach(f => {
+      this.foodInCart.forEach((f) => {
         this.cartService.selectItem(f);
       });
     } else {
-      this.foodInCart.forEach(f => {
+      this.foodInCart.forEach((f) => {
         this.cartService.unselectItem(f);
       });
     }
@@ -59,22 +64,19 @@ export class CartComponent implements OnInit {
     if (isChecked) {
       this.cartService.selectItem(food);
       this.updateSelectAll();
-    }
-    else {
+    } else {
       this.cartService.unselectItem(food);
       this.selectAll = false;
     }
   }
 
   updateSelectAll() {
-    this.selectAll = this.foodInCart.every(f => f.selected);
+    this.selectAll = this.foodInCart.every((f) => f.selected);
   }
 
   order() {
-    const token = this.dataService.getSession('access_token');
-
-    if (!token)
-      console.log('Login Login');
-
+    // const token = this.dataService.getSession('access_token');
+    // if (!this.auGuarService.isLoggedIn)
+    //   this.router.navigate(['/login']);
   }
 }

@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { DataService } from './data.service';
-import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  Router,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthGuardService {
+export class AuthService {
   userData: any;
   private user: Observable<User | undefined> = of(undefined);
   constructor(
     private httpService: HttpService,
     private dataService: DataService,
     private router: Router
-  ) { }
+  ) {}
 
   get isLoggedIn(): boolean {
-    return (this.dataService.getSession('accessToken') !== null);
+    return this.dataService.getSession('accessToken') !== null;
   }
 
   get usersData(): Observable<any> {
@@ -31,8 +35,7 @@ export class AuthGuardService {
   }
 
   login(accessToken: string): void {
-    if (!accessToken)
-      return;
+    if (!accessToken) return;
 
     this.dataService.setSession('access_token', accessToken);
     this.user = this.httpService.getUserInfo();
@@ -50,8 +53,6 @@ export class AuthGuardService {
     if (!this.isLoggedIn) {
       this.router.navigate(['login']);
     }
-
     return this.isLoggedIn;
   }
-
 }

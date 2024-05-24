@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { User } from '../../../models/user';
 import { DataService } from '../../../services/data.service';
-import { AuthGuardService } from '../../../services/auth-guard.service';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../services/cart.service';
 import { Food } from '../../../models/food';
@@ -31,9 +31,9 @@ export class MainLayoutComponent {
   constructor(
     private router: Router,
     private dataService: DataService,
-    private authGuardService: AuthGuardService,
+    private authGuardService: AuthService,
     private cartService: CartService,
-    private httpService: HttpService,
+    private httpService: HttpService
   ) {
     this.user = authGuardService.userData;
     this.cartItems = this.cartService.getAll();

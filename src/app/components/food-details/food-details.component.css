@@ -42,15 +42,67 @@
   background-color: #ffcc4d;
 }
 
-::ng-deep .ngx-pagination .pagination-next a{
+
+::ng-deep .ngx-pagination a:hover {
   border-radius: 50%;
-  border: 1px solid #ffcc4d;
-  /* display: none; */
-  /* visibility: hidden; */
 }
 
-::ng-deep .ngx-pagination .pagination-next a::after{
-  content: '>';
-  font-size: 1em;
-  position: absolute;
+::ng-deep .ngx-pagination .pagination-previous a:hover {
+  border-radius: 50%;
 }
+
+::ng-deep .ngx-pagination .pagination-previous.disabled span{
+  display: none;
+}
+
+::ng-deep .ngx-pagination .pagination-previous.disabled::before{
+  content: 'Trước' !important;
+}
+
+::ng-deep .ngx-pagination .pagination-next.disabled span{
+  display: none;
+}
+
+::ng-deep .ngx-pagination .pagination-next.disabled span::after{
+  display: none;
+}
+
+::ng-deep .ngx-pagination .pagination-next.disabled::before{
+  content: 'Sau' !important;
+}
+
+::ng-deep .ngx-pagination .pagination-next.disabled::after{
+  display: none !important;
+}
+
+::ng-deep .ngx-pagination .pagination-next a::after {
+  /* content: 'Tiếp theo' !important; */
+  content: 'Sau' !important;
+  position: absolute;
+  visibility: visible;
+  left: 0;
+  width: auto;
+}
+
+::ng-deep .ngx-pagination .pagination-previous a::before {
+  content: 'Trước' !important;
+  position: absolute;
+  visibility: visible;
+  /* left: 0; */
+  right: 0;
+}
+
+
+::ng-deep .ngx-pagination .pagination-next a {
+  visibility: hidden;
+  position: relative;
+}
+
+::ng-deep .ngx-pagination .pagination-previous a {
+  visibility: hidden;
+  position: relative;
+}
+
+/* ::ng-deep .ngx-pagination .pagination-previous a::before {
+  content: '<' !important;
+} */
