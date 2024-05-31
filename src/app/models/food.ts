@@ -6,10 +6,10 @@ export class Food {
     public imageURL: string = '',
     public price: number = 0,
     public quantity: number = 0,
-    public selected: boolean = false,
-    // public category: string = '',
+    public selected: boolean = false
+  ) // public category: string = '',
 
-  ) {
+  {
     if (imageURL === '')
       imageURL = 'https://dummyimage.com/400x600/dddddd/aaa&text=No+image';
   }

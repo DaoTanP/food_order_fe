@@ -9,11 +9,11 @@ import { AuthGuard } from '../guards/auth.guard';
 
 export const mainLayoutRoute: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'search', component: FoodSearchComponent },
   { path: 'food', component: FoodDetailsComponent },
   { path: 'food/:id', component: FoodDetailsComponent },
-  { path: 'payment', component: PaymentComponent },
+  { path: 'payment', component: PaymentComponent, canActivate: [AuthGuard] },
 ];

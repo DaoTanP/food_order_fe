@@ -20,13 +20,13 @@ export class ProfileComponent {
   protected displayName: FormControl = new FormControl(null, [
     Validators.required,
   ]);
-  protected phoneNumber: FormControl = new FormControl(null);
+  protected phone: FormControl = new FormControl(null);
   protected email: FormControl = new FormControl(null);
   protected address: FormControl = new FormControl(null);
 
   public editInfoForm: FormGroup = new FormGroup({
     displayName: this.displayName,
-    phoneNumber: this.phoneNumber,
+    phone: this.phone,
     email: this.email,
     address: this.address,
   });
@@ -55,7 +55,7 @@ export class ProfileComponent {
         this.userInfo.value = res;
         this.editInfoForm.setValue({
           displayName: this.userInfo.displayName,
-          phoneNumber: this.userInfo.phoneNumber || null,
+          phone: this.userInfo.phone || null,
           email: this.userInfo.email,
           address: this.userInfo.address,
         });
@@ -90,11 +90,8 @@ export class ProfileComponent {
 
     // Remove all null attributes from the form
     const formValue = this.editInfoForm.value;
-    const filteredValue = Object.keys(formValue)
-      .filter((k) => formValue[k] != null)
-      .reduce((a, k) => ({ ...a, [k]: formValue[k] }), {});
 
-    this.httpService.editUserInfo(filteredValue).subscribe({
+    this.httpService.editUserInfo(formValue).subscribe({
       next: (res) => {
         this.httpService.getUserInfo().subscribe((userInfo) => {
           this.userInfo.value = userInfo;
@@ -278,9 +275,7 @@ export class ProfileComponent {
 
   logOut() {
     this.authGuardService.logOut();
-    let navigateAfterLogOut = this.dataService.getData('navigateAfterLogOut');
-
-    if (navigateAfterLogOut) navigateAfterLogOut(this.router);
+    this.router.navigate(['home']);
   }
 }
 

@@ -22,7 +22,7 @@
         </div>
       </div>
 
-      <div *ngIf="foodInCart.length === 0">
+      <div *ngIf="!cart.cartItems || cart.cartItems.length === 0">
         <div class="container">
           <img
             src="https://food.grab.com/static/images/ilus-basket-empty.svg"
@@ -45,8 +45,8 @@
         </div>
       </div>
 
-      <div *ngIf="foodInCart.length > 0">
-        <div class="item-border mb-3" *ngFor="let item of foodInCart">
+      <div *ngIf="cart.cartItems.length > 0">
+        <div class="item-border mb-3" *ngFor="let item of cart.cartItems">
           <div class="card-body p-3">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-1 col-lg-1 col-xl-1 text-start">
@@ -54,26 +54,26 @@
                   type="checkbox"
                   class="checkbox"
                   #cb
-                  [checked]="item.selected"
-                  (change)="checkboxChanged(cb.checked, item)"
+                  [checked]="item.item.selected"
+                  (change)="checkboxChanged(cb.checked, item.item)"
                 />
               </div>
               <div class="col-md-2 col-lg-2 col-xl-2">
                 <img
-                  src="{{ item.imageURL }}"
+                  src="{{ item.item.imageURL }}"
                   class="img-fluid rounded-3"
                   alt="Food Images"
                 />
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-                <p class="lead fw-bold mb-2 text-name">{{ item.name }}</p>
-                <p class="text-muted">{{ item.description }}</p>
+                <p class="lead fw-bold mb-2 text-name">{{ item.item.name }}</p>
+                <p class="text-muted">{{ item.item.description }}</p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                 <button
                   type="button"
                   class="btn btn-warning rounded-circle py-0"
-                  (click)="increaseQuantity(item)"
+                  (click)="increaseQuantity(item.item)"
                 >
                   <i class="fa-solid fa-plus" style="color: #fff"></i>
                 </button>
@@ -83,14 +83,14 @@
                 <button
                   type="button"
                   class="btn btn-warning rounded-circle"
-                  (click)="decreaseQuantity(item)"
+                  (click)="decreaseQuantity(item.item)"
                 >
                   <i class="fa-solid fa-minus" style="color: #fff"></i>
                 </button>
               </div>
               <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                 <h5 class="mb-0 text-danger">
-                  {{ item.price * item.quantity | currency : "VND" }}
+                  {{ item.item.price * item.quantity | currency : "VND" }}
                 </h5>
               </div>
 
@@ -98,7 +98,9 @@
                 <button
                   class="text-warning border-0 bg-transparent"
                   data-bs-toggle="modal"
-                  [attr.data-bs-target]="'#removeItemsModal-' + item.itemId"
+                  [attr.data-bs-target]="
+                    '#removeItemsModal-' + item.item.itemId
+                  "
                 >
                   <i class="fas fa-trash fa-lg"></i>
                 </button>
@@ -106,7 +108,7 @@
 
               <div
                 class="modal fade"
-                id="removeItemsModal-{{ item.itemId }}"
+                id="removeItemsModal-{{ item.item.itemId }}"
                 tabindex="-1"
                 aria-hidden="true"
               >
@@ -125,7 +127,9 @@
                     </div>
                     <div class="modal-body">
                       Bạn có chắc chắn muốn xóa
-                      <span class="text-name fw-semibold">{{ item.name }}</span>
+                      <span class="text-name fw-semibold">{{
+                        item.item.name
+                      }}</span>
                       khỏi giỏ hàng
                     </div>
                     <div class="modal-footer">
@@ -137,7 +141,7 @@
                         Hủy
                       </button>
                       <button
-                        (click)="removeFromCart(item)"
+                        (click)="removeFromCart(item.item)"
                         type="button"
                         class="btn btn-danger"
                         data-bs-dismiss="modal"

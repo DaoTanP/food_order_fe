@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Food } from '../models/food';
-import { of } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
+import { Cart } from '../models/cart';
+import { HttpService } from './http.service';
+import { AddToCartDTO } from '../models/dto/add-to-cart.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -9,24 +12,24 @@ export class CartService {
   private foodInCart: Food[] = [];
   private total: number = 0;
 
-  constructor() { }
+  private cart!: Observable<Cart>;
+
+  constructor(private httpService: HttpService) {
+    this.cart = httpService.getCart();
+  }
 
   getAll() {
-    return of(this.foodInCart);
+    return this.cart;
   }
 
   addToCart(foodToAdd: Food) {
-    const food: Food = { ...foodToAdd, quantity: 1, selected: false };
-
-    const index = this.foodInCart.findIndex((x) => x.itemId === food.itemId);
-    if (index !== -1) {
-      const foodToUpdate = this.foodInCart[index];
-      foodToUpdate.quantity += food.quantity;
-      this.updateTotal();
-      return;
-    }
-
-    this.foodInCart.push(food);
+    return this.cart.pipe(
+      switchMap((cart) => {
+        return this.httpService.addToCart(
+          new AddToCartDTO(foodToAdd.itemId, 1)
+        );
+      })
+    );
   }
 
   removeFromCart(food: Food) {

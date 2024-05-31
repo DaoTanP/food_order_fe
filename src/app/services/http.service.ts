@@ -6,6 +6,8 @@ import { RegisterDTO } from '../models/dto/register.dto';
 import { DataService } from './data.service';
 import { Food } from '../models/food';
 import { Category } from '../models/category';
+import { Cart } from '../models/cart';
+import { AddToCartDTO } from '../models/dto/add-to-cart.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +45,7 @@ export class HttpService {
   }
 
   editUserInfo(userInfoChanges: any): Observable<any> {
-    return this.httpClient.patch(this.USER_API_URL, userInfoChanges, {
+    return this.httpClient.put(this.API_URL + '/user/update', userInfoChanges, {
       headers: {
         Authorization: 'Bearer ' + this.dataService.getSession('access_token'),
       },
@@ -86,5 +88,26 @@ export class HttpService {
 
   getAllFoods(): Observable<Food[]> {
     return this.httpClient.get<Food[]>(this.API_URL + '/menu/viewall');
+  }
+
+  getCart(): Observable<Cart> {
+    return this.httpClient.get<Cart>(this.API_URL + '/cart/viewcart', {
+      headers: {
+        Authorization: 'Bearer ' + this.dataService.getSession('access_token'),
+      },
+    });
+  }
+
+  addToCart(addToCartDto: AddToCartDTO): Observable<any> {
+    return this.httpClient.post(
+      this.API_URL + '/cart/addtocart',
+      addToCartDto,
+      {
+        headers: {
+          Authorization:
+            'Bearer ' + this.dataService.getSession('access_token'),
+        },
+      }
+    );
   }
 }

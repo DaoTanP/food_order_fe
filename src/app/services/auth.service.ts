@@ -22,7 +22,7 @@ export class AuthService {
   ) {}
 
   get isLoggedIn(): boolean {
-    return this.dataService.getSession('accessToken') !== null;
+    return this.dataService.getSession('access_token') !== null;
   }
 
   get usersData(): Observable<any> {

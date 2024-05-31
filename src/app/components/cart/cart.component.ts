@@ -4,6 +4,7 @@ import { Food } from '../../models/food';
 import { CartService } from '../../services/cart.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
+import { Cart } from '../../models/cart';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './cart.component.css',
 })
 export class CartComponent implements OnInit {
-  foodInCart: Food[] = [];
+  cart!: Cart;
   get total() {
     return this.cartService.getTotal();
   }
@@ -28,8 +29,9 @@ export class CartComponent implements OnInit {
   }
 
   getAll() {
-    this.cartService.getAll().subscribe((res: Food[]) => {
-      this.foodInCart = res;
+    this.cartService.getAll().subscribe((res: Cart) => {
+      this.cart = res;
+      console.log(res);
     });
   }
 
@@ -49,12 +51,12 @@ export class CartComponent implements OnInit {
   toggleSelectAll() {
     console.log(this.selectAll);
     if (this.selectAll) {
-      this.foodInCart.forEach((f) => {
-        this.cartService.selectItem(f);
+      this.cart.cartItems.forEach((f) => {
+        this.cartService.selectItem(f.item);
       });
     } else {
-      this.foodInCart.forEach((f) => {
-        this.cartService.unselectItem(f);
+      this.cart.cartItems.forEach((f) => {
+        this.cartService.unselectItem(f.item);
       });
     }
     console.log(this.selectAll);
@@ -71,7 +73,7 @@ export class CartComponent implements OnInit {
   }
 
   updateSelectAll() {
-    this.selectAll = this.foodInCart.every((f) => f.selected);
+    this.selectAll = this.cart.cartItems.every((f) => f.selected);
   }
 
   order() {

@@ -1,5 +1,5 @@
 import { Component, HostListener } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 import { User } from '../../../models/user';
 import { DataService } from '../../../services/data.service';
 import { AuthService } from '../../../services/auth.service';
@@ -19,10 +19,9 @@ export class MainLayoutComponent {
   protected user: Observable<User | undefined> = of(undefined);
 
   protected name: string = '';
-  protected ward: string = '';
 
   protected categories!: Observable<Category[]>;
-  protected cartItems!: Observable<Food[]>;
+  protected cartItemCount!: Observable<number>;
 
   get isLoggedIn() {
     return this.dataService.getSession('access_token') !== null;
@@ -36,7 +35,11 @@ export class MainLayoutComponent {
     private httpService: HttpService
   ) {
     this.user = authGuardService.userData;
-    this.cartItems = this.cartService.getAll();
+    this.cartItemCount = this.cartService.getAll().pipe(
+      map((cart) => {
+        return cart.cartItems.length;
+      })
+    );
     this.categories = httpService.getCategories();
   }
 
@@ -44,7 +47,6 @@ export class MainLayoutComponent {
     this.router.navigate(['/food'], {
       queryParams: {
         name: this.name || '',
-        ward: this.ward || '',
       },
     });
   }

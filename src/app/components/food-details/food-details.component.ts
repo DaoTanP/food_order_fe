@@ -62,12 +62,23 @@ export class FoodDetailsComponent implements OnInit {
   addToCart(item: Food) {
     console.log(item);
 
-    this.cartService.addToCart(item);
-    this.alertService.appendAlert(
-      'Thêm vào giỏ hàng thành công',
-      AlertType.success,
-      30,
-      'alert-container'
-    );
+    this.cartService.addToCart(item).subscribe({
+      next: (res) => {
+        this.alertService.appendAlert(
+          'Thêm vào giỏ hàng thành công',
+          AlertType.success,
+          30,
+          'alert-container'
+        );
+      },
+      error: (err) => {
+        this.alertService.appendAlert(
+          'Có lỗi xảy ra',
+          AlertType.danger,
+          30,
+          'alert-container'
+        );
+      },
+    });
   }
 }

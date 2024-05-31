@@ -1,14 +1,25 @@
-<div *ngIf="waiting" class="position-fixed z-3 bg-body-secondary bg-opacity-50 w-100" style="height: 100%;">
-  <div class="d-flex justify-content-center align-items-center w-100" style="height: 100%;">
+<div
+  *ngIf="waiting"
+  class="position-fixed z-3 bg-body-secondary bg-opacity-50 w-100"
+  style="height: 100%"
+>
+  <div
+    class="d-flex justify-content-center align-items-center w-100"
+    style="height: 100%"
+  >
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
 </div>
 
-<div id="alert-container" class="position-sticky z-3 w-100 pb-2" style="top: 4rem;">
+<div
+  id="alert-container"
+  class="position-sticky z-3 w-100 pb-2"
+  style="top: 4rem"
+>
   <style>
-    .alert-container>* {
+    .alert-container > * {
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
   </style>
@@ -18,73 +29,148 @@
   <div class="row">
     <div class="col-12 col-md-auto me-lg-3">
       <div class="position-relative">
-        <img src="{{userInfo.avatar}}" alt="avatar"
-          class="m-auto mb-2 m-lg-0 d-block rounded-circle img-fluid border border-5 border-light-subtle shadow-sm avatar">
-        <label for="avatarUpload" class="position-absolute bottom-0 start-50 btn py-2"
+        <img
+          src="https://api.dicebear.com/8.x/avataaars/svg?seed={{
+            userInfo.displayName
+          }}"
+          alt="avatar"
+          class="m-auto mb-2 m-lg-0 d-block rounded-circle img-fluid border border-5 border-light-subtle shadow-sm avatar"
+        />
+        <!-- <label for="avatarUpload" class="position-absolute bottom-0 start-50 btn py-2"
           style="transform: translateX(75%);">
           <img src="../../../assets/images/icons/socials/photo.png" alt="" style="width: 40px; height: 40px;">
           <input id="avatarUpload" type="file" class="visually-hidden" (change)="uploadAvatar($event)">
-        </label>
+        </label> -->
       </div>
-      <p class="h4 text-center mb-2">{{userInfo.displayName}}</p>
-      <button class="btn primary-btn mb-2 py-1 d-block w-100" data-bs-toggle="modal" data-bs-target="#infoModal">Sửa
-        thông tin
+      <p class="h4 text-center mb-2">{{ userInfo.displayName }}</p>
+      <button
+        class="btn primary-btn mb-2 py-1 d-block w-100"
+        data-bs-toggle="modal"
+        data-bs-target="#infoModal"
+      >
+        Sửa thông tin
       </button>
-      <button class="btn btn-outline-danger py-1 mb-2 d-block w-100" data-bs-toggle="modal"
-        data-bs-target="#logoutModal" (click)="logOut()">Đăng xuất
+      <button
+        class="btn btn-outline-danger py-1 mb-2 d-block w-100"
+        data-bs-toggle="modal"
+        data-bs-target="#logoutModal"
+        (click)="logOut()"
+      >
+        Đăng xuất
       </button>
     </div>
     <div class="col">
       <ul class="nav nav-underline" id="profileTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button"
-            role="tab" aria-controls="info" aria-selected="true">Thông tin</button>
+          <button
+            class="nav-link active"
+            id="info-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#info"
+            type="button"
+            role="tab"
+            aria-controls="info"
+            aria-selected="true"
+          >
+            Thông tin
+          </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-list" type="button"
-            role="tab" aria-controls="order-list" aria-selected="false">Đơn hàng</button>
+          <button
+            class="nav-link"
+            id="order-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#order-list"
+            type="button"
+            role="tab"
+            aria-controls="order-list"
+            aria-selected="false"
+          >
+            Đơn hàng
+          </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#password-panel" type="button"
-            role="tab" aria-controls="password-panel" aria-selected="false">Đổi mật khẩu</button>
+          <button
+            class="nav-link"
+            id="password-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#password-panel"
+            type="button"
+            role="tab"
+            aria-controls="password-panel"
+            aria-selected="false"
+          >
+            Đổi mật khẩu
+          </button>
         </li>
       </ul>
       <div class="tab-content">
-        <div class="tab-pane py-3 active position-relative" id="info" role="tabpanel" aria-labelledby="info-tab">
+        <div
+          class="tab-pane py-3 active position-relative"
+          id="info"
+          role="tabpanel"
+          aria-labelledby="info-tab"
+        >
           <div class="d-flex flex-column gap-3">
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Tên:</div>
-              <div class="col">{{userInfo.displayName}}</div>
+              <div class="col">{{ userInfo.displayName }}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Số điện thoại:</div>
-              <div class="col">{{userInfo.phoneNumber}}</div>
+              <div class="col">{{ userInfo.phone }}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Email:</div>
-              <div class="col">{{userInfo.email}}</div>
+              <div class="col">{{ userInfo.email }}</div>
             </div>
             <div class="row justify-content-center align-items-center g-2">
               <div class="col-3">Địa chỉ:</div>
-              <div class="col">{{userInfo.address}}</div>
+              <div class="col">{{ userInfo.address }}</div>
             </div>
           </div>
         </div>
 
-        <div class="tab-pane py-3 position-relative" id="order-list" role="tabpanel" aria-labelledby="order-list">
+        <div
+          class="tab-pane py-3 position-relative"
+          id="order-list"
+          role="tabpanel"
+          aria-labelledby="order-list"
+        >
           <div class="mb-2">Bạn có 3 đơn hàng !</div>
-          <button class="btn btn-warning me-3" data-bs-target="#detailsOrderModal" data-bs-toggle="modal">Xem chi
-            tiết</button>
+          <button
+            class="btn btn-warning me-3"
+            data-bs-target="#detailsOrderModal"
+            data-bs-toggle="modal"
+          >
+            Xem chi tiết
+          </button>
         </div>
 
-        <div class="modal fade" id="detailsOrderModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div
+          class="modal fade"
+          id="detailsOrderModal"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5 fw-bold text-warning" id="staticBackdropLabel">Chi tiết các đơn hàng của bạn
+                <h1
+                  class="modal-title fs-5 fw-bold text-warning"
+                  id="staticBackdropLabel"
+                >
+                  Chi tiết các đơn hàng của bạn
                 </h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
               </div>
               <div class="modal-body">
                 <table class="table">
@@ -119,22 +205,54 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Đóng cửa sổ</button>
+                <button
+                  type="button"
+                  class="btn btn-warning"
+                  data-bs-dismiss="modal"
+                >
+                  Đóng cửa sổ
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="tab-pane py-3" id="password-panel" role="tabpanel" aria-labelledby="password-tab">
+        <div
+          class="tab-pane py-3"
+          id="password-panel"
+          role="tabpanel"
+          aria-labelledby="password-tab"
+        >
           <div class="row mb-3">
-            <div class="col-3"><label for="passwordNew2" class="form-label">Nhập mật khẩu mới</label></div>
+            <div class="col-3">
+              <label for="passwordNew2" class="form-label"
+                >Nhập mật khẩu mới</label
+              >
+            </div>
             <div class="col">
-              <input type="password" [ngModel] #passwordNew2 id="passwordNew2" class="form-control">
+              <input
+                type="password"
+                [ngModel]
+                #passwordNew2
+                id="passwordNew2"
+                class="form-control"
+              />
             </div>
           </div>
           <div class="row mb-3">
-            <div class="col-3"><label for="passwordNew" class="form-label">Nhập lại mật khẩu mới</label></div>
-            <div class="col"><input type="password" [ngModel] #passwordNew id="passwordNew" class="form-control">
+            <div class="col-3">
+              <label for="passwordNew" class="form-label"
+                >Nhập lại mật khẩu mới</label
+              >
+            </div>
+            <div class="col">
+              <input
+                type="password"
+                [ngModel]
+                #passwordNew
+                id="passwordNew"
+                class="form-control"
+              />
             </div>
           </div>
           <div class="row">
@@ -146,9 +264,15 @@
           <div class="row mb-3">
             <div class="col-3"></div>
             <div class="col">
-              <button class="btn primary-btn" [disabled]="!passwordNew.value ||
-                passwordNew.value !== passwordNew2.value" (click)="changePassword(passwordNew.value)">Thay đổi mật
-                khẩu</button>
+              <button
+                class="btn primary-btn"
+                [disabled]="
+                  !passwordNew.value || passwordNew.value !== passwordNew2.value
+                "
+                (click)="changePassword(passwordNew.value)"
+              >
+                Thay đổi mật khẩu
+              </button>
             </div>
           </div>
         </div>
@@ -157,39 +281,90 @@
   </div>
 </div>
 
-<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="infoModal"
+  tabindex="-1"
+  aria-labelledby="infoModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title fw-bold text-warning" id="infoModalLabel">Sửa thông tin</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title fw-bold text-warning" id="infoModalLabel">
+          Sửa thông tin
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
-        <form [formGroup]="editInfoForm" (ngSubmit)="submitChange()" id="editInfoForm">
+        <form
+          [formGroup]="editInfoForm"
+          (ngSubmit)="submitChange()"
+          id="editInfoForm"
+        >
           <div class="col mb-3 w-100">
             <label for="displayName" class="form-label">Tên hiển thị</label>
-            <input type="text" id="displayName" class="form-control" formControlName="displayName"
-              aria-describedby="helpDisplayNameId">
+            <input
+              type="text"
+              id="displayName"
+              class="form-control"
+              formControlName="displayName"
+              aria-describedby="helpDisplayNameId"
+            />
           </div>
           <div class="col mb-3 w-100">
             <label for="phoneNumber" class="form-label">Số điện thoại</label>
-            <input type="text" id="phoneNumber" class="form-control" formControlName="phoneNumber"
-              aria-describedby="helpPhoneNumberId">
+            <input
+              type="text"
+              id="phoneNumber"
+              class="form-control"
+              formControlName="phone"
+              aria-describedby="helpPhoneNumberId"
+            />
           </div>
           <div class="col mb-3 w-100">
             <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" class="form-control" formControlName="email" aria-describedby="helpEmailId">
+            <input
+              type="email"
+              id="email"
+              class="form-control"
+              formControlName="email"
+              aria-describedby="helpEmailId"
+            />
           </div>
           <div class="col mb-3 w-100">
             <label for="address" class="form-label">Địa chỉ</label>
-            <input type="text" id="address" class="form-control" formControlName="address"
-              aria-describedby="helpAddressId">
+            <input
+              type="text"
+              id="address"
+              class="form-control"
+              formControlName="address"
+              aria-describedby="helpAddressId"
+            />
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Hủy</button>
-        <button type="submit" form="editInfoForm" class="btn primary-btn" data-bs-dismiss="modal">Lưu thay đổi</button>
+        <button
+          type="button"
+          class="btn btn-outline-danger"
+          data-bs-dismiss="modal"
+        >
+          Hủy
+        </button>
+        <button
+          type="submit"
+          form="editInfoForm"
+          class="btn primary-btn"
+          data-bs-dismiss="modal"
+        >
+          Lưu thay đổi
+        </button>
       </div>
     </div>
   </div>
