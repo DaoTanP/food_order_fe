@@ -43,35 +43,34 @@ export class CartComponent {
     this.cartService
       .removeFromCart(cartItemId)
       .subscribe({ next: (res) => console.log, error: (err) => console.log });
-    this.updateSelectAll();
   }
 
-  toggleSelectAll() {
-    // console.log(this.selectAll);
-    // if (this.selectAll) {
-    //   this.cart.cartItems.forEach((f) => {
-    //     this.cartService.selectItem(f.item);
-    //   });
-    // } else {
-    //   this.cart.cartItems.forEach((f) => {
-    //     this.cartService.unselectItem(f.item);
-    //   });
-    // }
-    // console.log(this.selectAll);
+  toggleSelectAll(isSelectAll: boolean) {
+    if (isSelectAll) {
+      this.cartService.selectAll();
+    } else {
+      this.cartService.unselectAll();
+    }
   }
 
   checkboxChanged(isChecked: boolean, cartItemId: number) {
     if (isChecked) {
       this.cartService.selectItem(cartItemId);
-      // this.updateSelectAll();
     } else {
       this.cartService.unselectItem(cartItemId);
-      // this.selectAll = false;
     }
   }
 
-  updateSelectAll() {
-    // this.selectAll = this.cart.cartItems.every((f) => f.selected);
+  isItemSelected(cartItemId: number): boolean {
+    return this.cartService.isItemSelected(cartItemId);
+  }
+
+  isEveryItemSelected(): boolean {
+    return this.cartService.isEveryItemSelected();
+  }
+
+  isNoItemSelected(): boolean {
+    return this.cartService.isNoItemSelected();
   }
 
   order() {

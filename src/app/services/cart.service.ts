@@ -11,7 +11,7 @@ import { AddToCartDTO } from '../models/dto/add-to-cart.dto';
 export class CartService {
   // private foodInCart: Food[] = [];
   private selectedItemIds: number[] = [];
-  private total: number = 0;
+  private total: BehaviorSubject<number> = new BehaviorSubject<number>(0);
 
   private cart!: Observable<Cart>;
   private subject!: BehaviorSubject<Cart>;
@@ -30,7 +30,7 @@ export class CartService {
     return this.subject.value;
   }
 
-  itemExistsInCart(food: Food) {
+  foodExistsInCart(food: Food) {
     const cartItems = this.getValue().cartItems;
     const i = cartItems.findIndex((item) => item.item.itemId === food.itemId);
 
@@ -41,14 +41,19 @@ export class CartService {
     return -1;
   }
 
+  isItemSelected(cartItemId: number): boolean {
+    return this.selectedItemIds.findIndex((id) => id === cartItemId) > -1;
+  }
+
   refreshCart() {
     this.httpService.getCart().subscribe((response) => {
       this.subject.next(response);
+      this.refreshTotal();
     });
   }
 
   addToCart(foodToAdd: Food) {
-    const cartItemId = this.itemExistsInCart(foodToAdd);
+    const cartItemId = this.foodExistsInCart(foodToAdd);
     if (cartItemId > -1) {
       return this.increaseQuantity(cartItemId);
     }
@@ -115,26 +120,49 @@ export class CartService {
     if (!cartItem) return;
 
     this.selectedItemIds.push(cartItemId);
-    this.updateTotal();
+    this.refreshTotal();
   }
 
   unselectItem(cartItemId: number) {
     const index = this.selectedItemIds.findIndex((id) => id === cartItemId);
     this.selectedItemIds.splice(index, 1);
-    this.updateTotal();
+    this.refreshTotal();
+  }
+
+  isEveryItemSelected(): boolean {
+    return this.selectedItemIds.length === this.getValue().cartItems.length;
+  }
+
+  isNoItemSelected(): boolean {
+    return this.selectedItemIds.length === 0;
+  }
+
+  selectAll() {
+    this.unselectAll();
+    this.getValue().cartItems.forEach((cartItem) =>
+      this.selectedItemIds.push(cartItem.id)
+    );
+    this.refreshTotal();
+  }
+
+  unselectAll() {
+    if (this.selectedItemIds.length === 0) return;
+
+    this.selectedItemIds.splice(0, this.selectedItemIds.length);
+    this.refreshTotal();
   }
 
   getTotal() {
-    return this.total;
+    return this.total.asObservable();
   }
 
-  updateTotal() {
-    this.total = 0;
+  refreshTotal() {
+    this.total.next(0);
     const cartItems = this.getValue().cartItems;
     this.selectedItemIds.forEach((id) => {
       const item = cartItems.find((item) => item.id === id);
       if (!item) return;
-      this.total += item.item.price * item.quantity;
+      this.total.next(this.total.value + item.item.price * item.quantity);
     });
   }
 }
