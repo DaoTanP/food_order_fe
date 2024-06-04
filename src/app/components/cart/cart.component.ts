@@ -5,14 +5,15 @@ import { CartService } from '../../services/cart.service';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { Cart } from '../../models/cart';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })
-export class CartComponent implements OnInit {
-  cart!: Cart;
+export class CartComponent {
+  cart: Observable<Cart>;
   get total() {
     return this.cartService.getTotal();
   }
@@ -22,58 +23,55 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private dataService: DataService,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    this.getAll();
+  ) {
+    this.cart = this.cartService.getAll();
   }
 
-  getAll() {
-    this.cartService.getAll().subscribe((res: Cart) => {
-      this.cart = res;
-      console.log(res);
-    });
+  increaseQuantity(cartItemId: number) {
+    this.cartService
+      .increaseQuantity(cartItemId)
+      .subscribe({ next: (res) => console.log, error: (err) => console.log });
   }
 
-  increaseQuantity(item: Food) {
-    this.cartService.increaseQuantity(item);
+  decreaseQuantity(cartItemId: number) {
+    this.cartService
+      .decreaseQuantity(cartItemId)
+      .subscribe({ next: (res) => console.log, error: (err) => console.log });
   }
 
-  decreaseQuantity(item: Food) {
-    this.cartService.decreaseQuantity(item);
-  }
-
-  removeFromCart(food: Food) {
-    this.cartService.removeFromCart(food);
+  removeFromCart(cartItemId: number) {
+    this.cartService
+      .removeFromCart(cartItemId)
+      .subscribe({ next: (res) => console.log, error: (err) => console.log });
     this.updateSelectAll();
   }
 
   toggleSelectAll() {
-    console.log(this.selectAll);
-    if (this.selectAll) {
-      this.cart.cartItems.forEach((f) => {
-        this.cartService.selectItem(f.item);
-      });
-    } else {
-      this.cart.cartItems.forEach((f) => {
-        this.cartService.unselectItem(f.item);
-      });
-    }
-    console.log(this.selectAll);
+    // console.log(this.selectAll);
+    // if (this.selectAll) {
+    //   this.cart.cartItems.forEach((f) => {
+    //     this.cartService.selectItem(f.item);
+    //   });
+    // } else {
+    //   this.cart.cartItems.forEach((f) => {
+    //     this.cartService.unselectItem(f.item);
+    //   });
+    // }
+    // console.log(this.selectAll);
   }
 
-  checkboxChanged(isChecked: boolean, food: Food) {
+  checkboxChanged(isChecked: boolean, cartItemId: number) {
     if (isChecked) {
-      this.cartService.selectItem(food);
-      this.updateSelectAll();
+      this.cartService.selectItem(cartItemId);
+      // this.updateSelectAll();
     } else {
-      this.cartService.unselectItem(food);
-      this.selectAll = false;
+      this.cartService.unselectItem(cartItemId);
+      // this.selectAll = false;
     }
   }
 
   updateSelectAll() {
-    this.selectAll = this.cart.cartItems.every((f) => f.selected);
+    // this.selectAll = this.cart.cartItems.every((f) => f.selected);
   }
 
   order() {

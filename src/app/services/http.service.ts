@@ -110,4 +110,29 @@ export class HttpService {
       }
     );
   }
+
+  removeFromCart(cartItemId: number): Observable<any> {
+    return this.httpClient.delete(
+      this.API_URL + `/cart/removefromcart/${cartItemId}`,
+      {
+        headers: {
+          Authorization:
+            'Bearer ' + this.dataService.getSession('access_token'),
+        },
+      }
+    );
+  }
+
+  updateQuantity(cartItemId: number, quantity: number): Observable<any> {
+    return this.httpClient.put(
+      this.API_URL + `/cart/updatequantity`,
+      { id: cartItemId, quantity },
+      {
+        headers: {
+          Authorization:
+            'Bearer ' + this.dataService.getSession('access_token'),
+        },
+      }
+    );
+  }
 }
