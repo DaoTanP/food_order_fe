@@ -41,10 +41,6 @@ export class CartService {
     return -1;
   }
 
-  isItemSelected(cartItemId: number): boolean {
-    return this.selectedItemIds.findIndex((id) => id === cartItemId) > -1;
-  }
-
   refreshCart() {
     this.httpService.getCart().subscribe((response) => {
       this.subject.next(response);
@@ -112,6 +108,24 @@ export class CartService {
     );
   }
 
+  getSelectedItems() {
+    return this.getValue().cartItems.filter((item) =>
+      this.selectedItemIds.includes(item.id)
+    );
+  }
+
+  isItemSelected(cartItemId: number): boolean {
+    return this.selectedItemIds.findIndex((id) => id === cartItemId) > -1;
+  }
+
+  isEveryItemSelected(): boolean {
+    return this.selectedItemIds.length === this.getValue().cartItems.length;
+  }
+
+  isNoItemSelected(): boolean {
+    return this.selectedItemIds.length === 0;
+  }
+
   selectItem(cartItemId: number) {
     const cartItem = this.getValue().cartItems.find(
       (cartItem) => cartItem.id === cartItemId
@@ -127,14 +141,6 @@ export class CartService {
     const index = this.selectedItemIds.findIndex((id) => id === cartItemId);
     this.selectedItemIds.splice(index, 1);
     this.refreshTotal();
-  }
-
-  isEveryItemSelected(): boolean {
-    return this.selectedItemIds.length === this.getValue().cartItems.length;
-  }
-
-  isNoItemSelected(): boolean {
-    return this.selectedItemIds.length === 0;
   }
 
   selectAll() {

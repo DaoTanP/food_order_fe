@@ -1,9 +1,5 @@
 <div class="container mt-3">
-  <nav
-    class="fs-5"
-    style="--bs-breadcrumb-divider: '>'"
-    aria-label="breadcrumb"
-  >
+  <nav class="fs-5" style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
     <div class="breadcrum-line mb-2">
       <ol class="breadcrumb fw-bold">
         <li class="breadcrumb-item"><a routerLink="/home">Trang chủ</a></li>
@@ -16,8 +12,7 @@
 <div class="container">
   <div class="card-body">
     <div class="row upper">
-      <span
-        ><i class="fa fa-check-circle-o"></i> Chi tiết đơn và thông tin thanh
+      <span><i class="fa fa-check-circle-o"></i> Chi tiết đơn và thông tin thanh
         toán
       </span>
     </div>
@@ -27,15 +22,10 @@
           <div class="row">
             <span class="header fw-bold">Thanh toán</span>
             <div class="icons">
+              <img src="https://image.bnews.vn/MediaUpload/Org/2022/04/26/logo-bidv-20220426071253.jpg" />
               <img
-                src="https://image.bnews.vn/MediaUpload/Org/2022/04/26/logo-bidv-20220426071253.jpg"
-              />
-              <img
-                src="https://cdn.tuoitre.vn/thumb_w/1200/471584752817336320/2023/2/23/logo-moi-vpbank-1677144252437151524603.png"
-              />
-              <img
-                src="https://media.loveitopcdn.com/3807/thumb/logo-techcombank-dongphucsongphu.png"
-              />
+                src="https://cdn.tuoitre.vn/thumb_w/1200/471584752817336320/2023/2/23/logo-moi-vpbank-1677144252437151524603.png" />
+              <img src="https://media.loveitopcdn.com/3807/thumb/logo-techcombank-dongphucsongphu.png" />
               <img src="https://img.icons8.com/color/48/000000/visa.png" />
             </div>
           </div>
@@ -57,30 +47,20 @@
       <div class="col-md-6">
         <div class="right border">
           <div class="header ps-3">Chi tiết đơn</div>
-          <div class="row item">
+          <div class="row item" *ngFor="let item of selectedCartItems">
             <div class="col-4 align-self-center">
-              <img class="img-fluid" src="https://i.imgur.com/79M6pU0.png" />
+              <img class="img-fluid" src="{{item.item.imageURL}}" />
             </div>
             <div class="col-8">
-              <div class="row text-muted">Cơm gà</div>
-              <div class="row">Số lượng:1</div>
-              <div class="row"><b class="px-0 text-danger">100,000 VNĐ</b></div>
-            </div>
-          </div>
-          <div class="row item">
-            <div class="col-4 align-self-center">
-              <img class="img-fluid" src="https://i.imgur.com/Ew8NzKr.jpg" />
-            </div>
-            <div class="col-8">
-              <div class="row text-muted">Kem xôi</div>
-              <div class="row">Số lượng:1</div>
-              <div class="row"><b class="px-0 text-danger">100,000 VNĐ</b></div>
+              <div class="row text-muted">{{item.item.name}}</div>
+              <div class="row">Số lượng: {{item.quantity}}</div>
+              <div class="row"><b class="px-0 text-danger">{{item.item.price | currency: "VND"}}</b></div>
             </div>
           </div>
           <hr />
           <div class="row lower">
             <div class="col text-left">Tạm tính</div>
-            <div class="col text-right">100,000 VNĐ</div>
+            <div class="col text-right">{{total | async | currency: "VND"}}</div>
           </div>
           <div class="row lower">
             <div class="col text-left">Phí vận chuyển</div>
@@ -88,7 +68,7 @@
           </div>
           <div class="row lower">
             <div class="col text-left"><b>Tổng thanh toán</b></div>
-            <div class="col text-right"><b>100,000 VNĐ</b></div>
+            <div class="col text-right"><b>{{total | async | currency: "VND"}}</b></div>
           </div>
           <button class="btn btn-warning">Thanh toán</button>
         </div>
